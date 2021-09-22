@@ -5,7 +5,7 @@ import RenderBar from './ToolsSideBar';
 import { Container } from 'reactstrap';
 import RenderCanvas from './Canvas';
 import Footer from './FooterComponent';
-import RenderDragableImages from './imageDrag';
+
 
 
 class Main extends Component {
@@ -42,7 +42,7 @@ class Main extends Component {
         return(
             
             <div>
-                <RenderDragableImages dragImages={this.state.dragImage}/>
+                
                 <NavBar />
                 <Container fluid="lg">
                     <div className="row mt-2">
@@ -53,7 +53,7 @@ class Main extends Component {
                     
                     <div className="row mt-2">
                         <RenderBar />
-                    <div className="col-12 col-md-10"> <RenderCanvas /> </div>
+                    <div className="col-12 col-md-10"> <RenderCanvas dragImage={this.state.dragImage}/> </div>
                         
                     </div>
                 </Container>

@@ -1,14 +1,17 @@
 import React from "react";
-
-const RenderCanvas= () =>
+import RenderDragableImages from './imageDrag';
+const RenderCanvas= (props) =>
 {
 
     return(
+        <>
+        
         
         <div id="canvas-container">
-
+        <RenderDragableImages dragImages={props.dragImage}/>
 
         </div>
+        </>
 
     );
 }

@@ -6,10 +6,11 @@ const RenderImage = ({image}) => {
     
     var coordinateX=image.cordx-image.width/2;
     var coordinatesY=image.cordy-image.height/2;
-
-
+    let element = document.getElementById('canvas-container')
+    
     return(
         <img className="draggable" style={{top: coordinatesY, left: coordinateX }}src={image.imgUrl} width={image.width} height={image.height}/>
+       
     );
 
 

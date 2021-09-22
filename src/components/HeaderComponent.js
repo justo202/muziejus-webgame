@@ -25,7 +25,9 @@ class Header extends Component {
       }
       takeScreenshot()
       {
-        html2canvas(document.getElementById('canvas-container')).then(function(canvas) {
+          let element = document.getElementById('canvas-container')
+        html2canvas(element, { allowTaint: true, windowWidth: element.width,
+            windowHeight: element.height}).then(function(canvas) {
             document.body.appendChild(canvas);
         });
       }

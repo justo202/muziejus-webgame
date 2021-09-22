@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  z-index: 100;
 }
 
 code {
@@ -23,4 +24,121 @@ code {
 #drop-custom:hover {
   background-color: #3c227a;
 
+}
+.arrow {
+  font-size: 100px;
+  opacity: 0.4;
+  transition: 1s;
+  z-index: 100;
+}
+.active{
+  opacity: 1;
+}
+.active:hover{
+  opacity: 0.7;
+  font-size: 115px;
+}
+@media only screen and (max-width: 425px) {
+  .arrow {
+    font-size: 55px;
+  }
+  .active:hover{
+    font-size: 45;
+  }
+}
+.image-row {
+  display: absolute;
+  background-color: #555;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  height: 200px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  z-index: 100;
+  border-radius: 2px;
+  position: relative;
+}
+.image-row::-webkit-scrollbar-track
+{
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+  z-index: 100;
+  
+}
+
+.image-row::-webkit-scrollbar
+{
+	width: 2px;
+	background-color: #F5F5F5;
+  z-index: 100;
+  
+  
+}
+
+.image-row::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #512DA8;
+  z-index: 100;
+  
+}
+.images {
+  position: relative;
+  display: inline-block;
+  height: 95%;
+  width: 200px;
+  z-index: 100;
+
+}
+
+.tool-btn {
+  background-color: #512DA8; 
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  position: relative;
+  font-size: 22px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  border-radius: 5px;
+}
+
+/* Darker background on mouse-over */
+.tool-btn:hover {
+  background-color: #351e6b;
+}
+
+#canvas-container {
+  width: 100%;
+  height: 500px;
+  background-color: gray;
+  box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+
+}
+
+.footer{
+  
+  background-color: #512DA8;
+  margin:0px auto;
+  margin-top: 100px;
+  padding: 20px 0px 20px 0px;
+  z-index: 100;
+}
+/* used for buttons */
+.unstyled {
+  background-color: transparent;
+  border: none;
+  position: relative;
+  z-index: 100;
+
+}
+.draggable{
+  position: absolute;
+  z-index: 101;
+  touch-action: none;
+  user-select: none;
+  transform: translate(0px, 0px);
 }

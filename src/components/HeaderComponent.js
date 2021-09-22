@@ -1,6 +1,8 @@
-import React, {Component } from "react";
+import React, {Component, createRef, useState } from "react";
 
 import { Navbar, Nav, NavItem, NavbarBrand, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
+import { useScreenshot } from 'use-react-screenshot'
+import html2canvas from "html2canvas";
 
 
 
@@ -10,7 +12,8 @@ class Header extends Component {
     {
         super(props);
         this.state = {
-            isDropDownOpen: false
+            isDropDownOpen: false,
+            image: ''
         }
         this.toggleDropDown = this.toggleDropDown.bind(this);
     }
@@ -20,37 +23,40 @@ class Header extends Component {
           });
 
       }
+      takeScreenshot()
+      {
+        html2canvas(document.getElementById('canvas-container')).then(function(canvas) {
+            document.body.appendChild(canvas);
+        });
+      }
     render()
-    {
+    {   
+        const ref = createRef(null)
+        
         return(
 
-            <div>
-            <Navbar dark>
-                <div className="container">
-                    <NavbarBrand className="mr-auto" href="/"><img src='assets/images/logo.png' height="30" width="41" alt='logo' /></NavbarBrand>
-                    <Nav className="ml-auto">
-                       
-                        <Dropdown isOpen={this.state.isDropDownOpen} size="lg">
-                        <DropdownToggle caret id ="drop-custom" onClick={this.toggleDropDown}>
-                                ...
-                         </DropdownToggle>
-                            <DropdownMenu right>
-                                <DropdownItem header>Pasirinkimai</DropdownItem>
-                                <DropdownItem>Some Action</DropdownItem>
-                                <DropdownItem text>Dropdown Item Text</DropdownItem>
-                                <DropdownItem disabled>Action (disabled)</DropdownItem>
-                                <DropdownItem divider />
-                                <DropdownItem>Foo Action</DropdownItem>
-                                <DropdownItem>Bar Action</DropdownItem>
-                                <DropdownItem>Quo Action</DropdownItem>
-                            </DropdownMenu>
-                        </Dropdown>
+            <div ref={ref}>
+            
+                <Navbar dark>
+                    <div className="container">
+                        <NavbarBrand className="mr-auto" href="/"><img src='assets/images/logo.png' height="30" width="41" alt='logo' /></NavbarBrand>
+                        <Nav className="ml-auto">
                         
-                    
-                    </Nav>
-                </div>
-            </Navbar>
-
+                            <Dropdown isOpen={this.state.isDropDownOpen} size="lg">
+                            <DropdownToggle caret id ="drop-custom" onClick={this.toggleDropDown}>
+                                    ...
+                            </DropdownToggle>
+                                <DropdownMenu right>
+                                    <DropdownItem header>Pasirinkimai</DropdownItem>
+                                    <DropdownItem><button className="unstyled" onClick={this.takeScreenshot}> parsiųsk nuotrauką </button></DropdownItem>
+                                </DropdownMenu>
+                            </Dropdown>
+                            
+                        
+                        </Nav>
+                    </div>
+                </Navbar>
+               
         </div>
 
         );

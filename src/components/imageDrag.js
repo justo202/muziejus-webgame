@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 
 
 
@@ -9,7 +9,7 @@ const RenderImage = ({onSelectImage, image}) => {
     let element = document.getElementById('canvas-container')
     
     return(
-        <img key={image.id} onClick={() => onSelectImage({image})}className={`draggable ${image.selected ? "selected" : ""}`} style={{top: coordinatesY, left: coordinateX }}src={image.imgUrl} width={image.width} height={image.height}/>
+        <img key={image.id} onMouseDown={() => onSelectImage({image})} onTouchStart={() => onSelectImage({image})} className={`draggable ${image.selected ? "selected" : ""}`} style={{top: coordinatesY, left: coordinateX }}src={image.imgUrl} width={image.width} height={image.height}/>
        
     );
 }

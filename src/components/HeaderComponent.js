@@ -63,13 +63,11 @@ class Header extends Component {
 
     render()
     {   
-        const ref = createRef(null)
-        
         return(
 
-            <div ref={ref}>
+            <div>
             
-                <Navbar dark>
+                <Navbar className="unselect" dark>
                     <div className="container">
                         <NavbarBrand className="mr-auto" href="/"><img src='assets/images/logo.png' height="30" width="41" alt='logo' /></NavbarBrand>
                         <Nav className="ml-auto">

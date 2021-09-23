@@ -11,14 +11,14 @@ const RenderLeftArrow = ({ClickFunction, page}) =>
     if(page > 0)
         return(
 
-            <div className="col-2 d-flex justify-content-center align-items-center"  >
+            <div className="col-2 d-flex justify-content-center align-items-center unselect"  >
                 <button onClick={() => ClickFunction()} className="unstyled"><FontAwesomeIcon icon={faArrowLeft} className="active arrow" /> </button>
             </div>   
         );
     else
         return(
 
-            <div className="col-2 d-flex justify-content-center align-items-center"  >
+            <div className="col-2 d-flex justify-content-center align-items-center unselect"  >
                 <button className="unstyled"><FontAwesomeIcon icon={faArrowLeft} className="arrow" /> </button>
             </div>   
         );
@@ -29,14 +29,14 @@ const RenderRightArrow = ({ClickFunction, page}) =>
     if(page < 2)
         return(
 
-            <div className="col-2 d-flex justify-content-center align-items-center"  >
+            <div className="col-2 d-flex justify-content-center align-items-center unselect"  >
                 <button onClick={() => ClickFunction()} className="unstyled"><FontAwesomeIcon  icon={faArrowRight} className="active arrow" /> </button>
             </div>   
         );
     else
         return(
 
-            <div className="col-2 d-flex justify-content-center align-items-center"  >
+            <div className="col-2 d-flex justify-content-center align-items-center unselect"  >
                 <button className="unstyled"><FontAwesomeIcon  icon={faArrowRight} className="arrow" /> </button>
             </div>   
         );
@@ -85,15 +85,24 @@ class Select extends Component {
         this.imageClick = this.imageClick.bind(this);
     }
 
-    imageClick =(event, {image}) => {
-        
-        console.log(event.clientY);
-        //Make the button invoke a function with parameters in a parent, and it will contain the state of all curently placed objects, their coordinates/sizes/img urls.
-        //var index = this.state.page[this.state.curPage].findIndex(stateImg => stateImg[1] === image[1]) finds index
-        image[2] = false;
-        this.props.onImageClick(image[0], 300, 300, event.clientX, event.clientY, image[1]);
-       // let newImage = [ image[0], 300, 300];
-       // <ImageDrag image={newImage} />
+    imageClick =(e, {image}) => {
+        var x, y;
+        if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel'){
+            var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+            var touch = evt.touches[0] || evt.changedTouches[0];
+            x = touch.pageX;
+            y = touch.pageY;
+        } else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover'|| e.type=='mouseout' || e.type=='mouseenter' || e.type=='mouseleave') {
+            x = e.clientX;
+            y = e.clientY;
+        }
+        else{
+            x=e.clientX;
+            y=e.clientY;
+        }
+
+        image[2] = false; //prevents the image from being displayed in the img bar
+        this.props.onImageClick(image[0], 300, 300, x, y, image[1]);
         this.setState(this.state);
 
     }

@@ -5,7 +5,7 @@ const Footer = () =>
 {
 
     return(
-        <div className="footer">empty</div>
+        <div className="footer unselect"></div>
     );
 
 }

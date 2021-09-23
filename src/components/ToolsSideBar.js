@@ -11,7 +11,7 @@ const RenderSideBar = () =>
 
 
     return(
-        <div>
+        <div className="unselect">
 
         <Row> <button className="tool-btn mb-2"><FontAwesomeIcon icon={faMousePointer}/></button></Row>
         <Row><button className="tool-btn mb-2"><FontAwesomeIcon icon={faPencilAlt}/></button></Row>

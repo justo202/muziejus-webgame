@@ -55,26 +55,26 @@ class Select extends Component {
             curPage: 0,
             page: [
                 [
-                    ["/assets/detalės-architektūros/detalės_akantas.png", 0, true],
-                    ["/assets/detalės-architektūros/detalės_dorėninė kolona.png", 1, true],
-                    ["/assets/detalės-architektūros/detalės_durys atidarytos.png", 2, true],
-                    ["/assets/detalės-architektūros/detalės_durys puošnios.png", 3, true],
-                    ["/assets/detalės-architektūros/detalės_durys.png", 4, true]        
+                    ["./assets/detalės-architektūros/detalės_akantas.png", 0, true],
+                    ["./assets/detalės-architektūros/detalės_dorėninė kolona.png", 1, true],
+                    ["./assets/detalės-architektūros/detalės_durys atidarytos.png", 2, true],
+                    ["./assets/detalės-architektūros/detalės_durys puošnios.png", 3, true],
+                    ["./assets/detalės-architektūros/detalės_durys.png", 4, true]        
                 ],
                 [
-                    ["/assets/fasadai/fasadas_antkapinis paminklas.png", 5, true],
-                    ["/assets/fasadai/fasadas_itališka koplyčia.png", 6, true],
-                    ["/assets/fasadai/fasadas_mykolo png.png", 7, true],       
+                    ["./assets/fasadai/fasadas_antkapinis paminklas.png", 5, true],
+                    ["./assets/fasadai/fasadas_itališka koplyčia.png", 6, true],
+                    ["./assets/fasadai/fasadas_mykolo png.png", 7, true],       
                 ],
                 [
-                    ["/assets/personažai/Animacija - vitruvijus rate.png", 8, true],
-                    ["/assets/personažai/personažai_bona.png", 9, true],
-                    ["/assets/personažai/personažai_darbininkas.png", 10, true],
-                    ["/assets/personažai/personažai_mykolas mojuoja.png", 11, true],
-                    ["/assets/personažai/personažai_mykolas sėdi.png", 12, true],
-                    ["/assets/personažai/personažai_renesanso žmogus.png", 13, true] ,  
-                    ["/assets/personažai/personažai_sapiega.png", 14, true],   
-                    ["/assets/personažai/personažai_vienuolės.png", 15, true]           
+                    ["./assets/personažai/Animacija - vitruvijus rate.png", 8, true],
+                    ["./assets/personažai/personažai_bona.png", 9, true],
+                    ["./assets/personažai/personažai_darbininkas.png", 10, true],
+                    ["./assets/personažai/personažai_mykolas mojuoja.png", 11, true],
+                    ["./assets/personažai/personažai_mykolas sėdi.png", 12, true],
+                    ["./assets/personažai/personažai_renesanso žmogus.png", 13, true] ,  
+                    ["./assets/personažai/personažai_sapiega.png", 14, true],   
+                    ["./assets/personažai/personažai_vienuolės.png", 15, true]           
                 ]
             ]
 

@@ -15,11 +15,22 @@ class Main extends Component {
         super(props);
         this.state= {
 
-            dragImage: []
+            dragImage: [],
+            selectedID: null
 
         }
     }
+    //Creates a new object array with the new item added to it
+    createNewArray = (item) =>
+    {
+        let newDragImages = [...this.state.dragImage, item]
+        if(this.state.selectedID!= null)
+            {
+                newDragImages.find(selectedImg => selectedImg.id === this.state.selectedID).selected = false; //changes the selected item
+            }
+        return newDragImages;
 
+    }
     onImageClick = (imgUrl, width, height, xx, yy, id) =>
     {
         let item = {
@@ -28,14 +39,32 @@ class Main extends Component {
             height: height,
             cordx: xx,
             cordy: yy,
-            id: id
-            }
+            id: id,
+            selected: true
+            }    
+        let newDragImages = this.createNewArray(item);
             
-        let newDragImages = [...this.state.dragImage, item]
             this.setState({
-                dragImage: newDragImages
+                dragImage: newDragImages,
+                selectedID: id
             })
     }
+    //changes the selected image
+    onSelectImage = ({image}) =>
+    {
+        let activeImageArray = [...this.state.dragImage]; //make a copy of the state
+        if(this.state.selectedID!= null)
+        {
+            activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).selected = false; //changes the selected item
+        }
+        activeImageArray.find(selectedImg => selectedImg.id === image.id).selected = true; //finds the item selected
+        this.setState({
+            dragImage: activeImageArray,
+            selectedID: image.id
+        })
+
+    }
+
     render()
     {
         
@@ -53,7 +82,7 @@ class Main extends Component {
                     
                     <div className="row mt-2">
                         <RenderBar />
-                    <div className="col-12 col-md-10"> <RenderCanvas dragImage={this.state.dragImage}/> </div>
+                    <div className="col-12 col-md-10"> <RenderCanvas onSelectImage={this.onSelectImage} dragImage={this.state.dragImage}/> </div>
                         
                     </div>
                 </Container>

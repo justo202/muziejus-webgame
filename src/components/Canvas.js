@@ -1,5 +1,5 @@
 import React from "react";
-import RenderDragableImages from './imageDrag';
+import DragableImages from './imageDrag';
 const RenderCanvas= (props) =>
 {
 
@@ -8,7 +8,7 @@ const RenderCanvas= (props) =>
         
         
         <div id="canvas-container">
-        <RenderDragableImages dragImages={props.dragImage}/>
+        <DragableImages onSelectImage={props.onSelectImage} dragImages={props.dragImage}/>
 
         </div>
         </>

@@ -55,25 +55,26 @@ class Select extends Component {
             curPage: 0,
             page: [
                 [
-                    ["https://picsum.photos/400/400?random=1", 0, true],
-                    ["https://picsum.photos/400/400?random=2", 1, true],
-                    ["https://picsum.photos/400/400?random=3", 2, true],
-                    ["https://picsum.photos/400/400?random=4", 3, true],
-                    ["https://picsum.photos/400/400?random=5", 4, true]        
+                    ["/assets/detalės-architektūros/detalės_akantas.png", 0, true],
+                    ["/assets/detalės-architektūros/detalės_dorėninė kolona.png", 1, true],
+                    ["/assets/detalės-architektūros/detalės_durys atidarytos.png", 2, true],
+                    ["/assets/detalės-architektūros/detalės_durys puošnios.png", 3, true],
+                    ["/assets/detalės-architektūros/detalės_durys.png", 4, true]        
                 ],
                 [
-                    ["https://picsum.photos/400/400?random=6", 5, true],
-                    ["https://picsum.photos/400/400?random=7", 6, true],
-                    ["https://picsum.photos/400/400?random=8", 7, true],
-                    ["https://picsum.photos/400/400?random=9", 8, true],
-                    ["https://picsum.photos/400/400?random=10", 9, true]        
+                    ["/assets/fasadai/fasadas_antkapinis paminklas.png", 5, true],
+                    ["/assets/fasadai/fasadas_itališka koplyčia.png", 6, true],
+                    ["/assets/fasadai/fasadas_mykolo png.png", 7, true],       
                 ],
                 [
-                    ["https://picsum.photos/400/400?random=11", 10, true],
-                    ["https://picsum.photos/400/400?random=12", 11, true],
-                    ["https://picsum.photos/400/400?random=13", 12, true],
-                    ["https://picsum.photos/400/400?random=14", 13, true],
-                    ["https://picsum.photos/400/400?random=15", 14, true]        
+                    ["/assets/personažai/Animacija - vitruvijus rate.png", 8, true],
+                    ["/assets/personažai/personažai_bona.png", 9, true],
+                    ["/assets/personažai/personažai_darbininkas.png", 10, true],
+                    ["/assets/personažai/personažai_mykolas mojuoja.png", 11, true],
+                    ["/assets/personažai/personažai_mykolas sėdi.png", 12, true],
+                    ["/assets/personažai/personažai_renesanso žmogus.png", 13, true] ,  
+                    ["/assets/personažai/personažai_sapiega.png", 14, true],   
+                    ["/assets/personažai/personažai_vienuolės.png", 15, true]           
                 ]
             ]
 

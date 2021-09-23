@@ -49,7 +49,7 @@ interact('.draggable')
         modifiers: [
           // keep the edges inside the parent
           interact.modifiers.restrictEdges({
-            outer: 'parent'
+           
           }),
     
           // minimum size

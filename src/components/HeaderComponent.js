@@ -1,11 +1,33 @@
 import React, {Component, createRef, useState } from "react";
 
 import { Navbar, Nav, NavItem, NavbarBrand, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
-import { useScreenshot } from 'use-react-screenshot'
 import html2canvas from "html2canvas";
 
 
+function  saveAs(uri, filename) {
 
+    var link = document.createElement('a');
+
+    if (typeof link.download === 'string') {
+
+        link.href = uri;
+        link.download = filename;
+
+        //Firefox requires the link to be in the body
+        document.body.appendChild(link);
+
+        //simulate click
+        link.click();
+
+        //remove the link when done
+        document.body.removeChild(link);
+
+    } else {
+
+        window.open(uri);
+
+    }
+}
 class Header extends Component {
 
     constructor(props)
@@ -16,6 +38,7 @@ class Header extends Component {
             image: ''
         }
         this.toggleDropDown = this.toggleDropDown.bind(this);
+        
     }
     toggleDropDown() {
         this.setState({
@@ -23,14 +46,21 @@ class Header extends Component {
           });
 
       }
+      //Snippet taken from https://stackoverflow.com/questions/31656689/how-to-save-img-to-users-local-computer-using-html2canvas
+   
       takeScreenshot()
       {
           let element = document.getElementById('canvas-container')
-        html2canvas(element, { allowTaint: true, windowWidth: element.width,
-            windowHeight: element.height}).then(function(canvas) {
-            document.body.appendChild(canvas);
-        });
+          if(element != null)
+            html2canvas(element, { allowTaint: false , windowWidth: element.width,
+                windowHeight: element.height}).then(function(canvas) {
+                    saveAs(canvas.toDataURL(), 'paveiksliukas.png');
+            });
+            this.setState({
+                isDropDownOpen: !this.state.isDropDownOpen
+              });
       }
+
     render()
     {   
         const ref = createRef(null)
@@ -44,13 +74,13 @@ class Header extends Component {
                         <NavbarBrand className="mr-auto" href="/"><img src='assets/images/logo.png' height="30" width="41" alt='logo' /></NavbarBrand>
                         <Nav className="ml-auto">
                         
-                            <Dropdown isOpen={this.state.isDropDownOpen} size="lg">
-                            <DropdownToggle caret id ="drop-custom" onClick={this.toggleDropDown}>
+                            <Dropdown isOpen={this.state.isDropDownOpen} toggle={this.toggleDropDown} size="lg">
+                            <DropdownToggle caret id ="drop-custom">
                                     ...
                             </DropdownToggle>
                                 <DropdownMenu right>
                                     <DropdownItem header>Pasirinkimai</DropdownItem>
-                                    <DropdownItem><button className="unstyled" onClick={this.takeScreenshot}> parsiųsk nuotrauką </button></DropdownItem>
+                                    <DropdownItem onClick={() => this.takeScreenshot()} >parsiųsk nuotrauką</DropdownItem>
                                 </DropdownMenu>
                             </Dropdown>
                             

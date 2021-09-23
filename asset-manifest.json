@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/muziejus-webgame/static/css/main.f62f95e1.chunk.css",
+    "main.js": "/muziejus-webgame/static/js/main.ec94abb5.chunk.js",
+    "main.js.map": "/muziejus-webgame/static/js/main.ec94abb5.chunk.js.map",
+    "runtime-main.js": "/muziejus-webgame/static/js/runtime-main.cd9383e9.js",
+    "runtime-main.js.map": "/muziejus-webgame/static/js/runtime-main.cd9383e9.js.map",
+    "static/css/2.28bb0c3d.chunk.css": "/muziejus-webgame/static/css/2.28bb0c3d.chunk.css",
+    "static/js/2.a8cd209b.chunk.js": "/muziejus-webgame/static/js/2.a8cd209b.chunk.js",
+    "static/js/2.a8cd209b.chunk.js.map": "/muziejus-webgame/static/js/2.a8cd209b.chunk.js.map",
+    "static/js/3.b6dc2823.chunk.js": "/muziejus-webgame/static/js/3.b6dc2823.chunk.js",
+    "static/js/3.b6dc2823.chunk.js.map": "/muziejus-webgame/static/js/3.b6dc2823.chunk.js.map",
+    "index.html": "/muziejus-webgame/index.html",
+    "static/css/2.28bb0c3d.chunk.css.map": "/muziejus-webgame/static/css/2.28bb0c3d.chunk.css.map",
+    "static/css/main.f62f95e1.chunk.css.map": "/muziejus-webgame/static/css/main.f62f95e1.chunk.css.map",
+    "static/js/2.a8cd209b.chunk.js.LICENSE.txt": "/muziejus-webgame/static/js/2.a8cd209b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cd9383e9.js",
+    "static/css/2.28bb0c3d.chunk.css",
+    "static/js/2.a8cd209b.chunk.js",
+    "static/css/main.f62f95e1.chunk.css",
+    "static/js/main.ec94abb5.chunk.js"
+  ]
+}

@@ -64,7 +64,8 @@ class Select extends Component {
                 [
                     ["./assets/fasadai/fasadas_antkapinis paminklas.png", 5, true],
                     ["./assets/fasadai/fasadas_itališka koplyčia.png", 6, true],
-                    ["./assets/fasadai/fasadas_mykolo png.png", 7, true],       
+                    ["./assets/fasadai/fasadas_mykolo png.png", 7, true], 
+                          
                 ],
                 [
                     ["./assets/personažai/Animacija - vitruvijus rate.png", 8, true],
@@ -74,7 +75,8 @@ class Select extends Component {
                     ["./assets/personažai/personažai_mykolas sėdi.png", 12, true],
                     ["./assets/personažai/personažai_renesanso žmogus.png", 13, true] ,  
                     ["./assets/personažai/personažai_sapiega.png", 14, true],   
-                    ["./assets/personažai/personažai_vienuolės.png", 15, true]           
+                    ["./assets/personažai/personažai_vienuolės.png", 15, true], 
+                              
                 ]
             ]
 
@@ -101,7 +103,7 @@ class Select extends Component {
             y=e.clientY;
         }
 
-        image[2] = false; //prevents the image from being displayed in the img bar
+     //   image[2] = false; //prevents the image from being displayed in the img bar
         this.props.onImageClick(image[0], 300, 300, x, y, image[1]);
         this.setState(this.state);
 
@@ -133,12 +135,9 @@ class Select extends Component {
                 );     
       });
     return(
-
-     
                 <div className="row">
                     <RenderLeftArrow ClickFunction={() => this.handleArrowDecrease()} page={this.state.curPage}/>
-                    <div className="col-8">
-                        
+                    <div className="col-8">     
                         <div className="image-row">
                         {imageSet}
                         </div>

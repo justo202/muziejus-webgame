@@ -18,7 +18,7 @@ interact('.draggable')
   
         // call this function on every dragend event
         end: ( event) => {
-          event.target.style.zIndex="1";
+       //   event.target.style.zIndex="1";
         }
       }
     }).resizable({
@@ -62,7 +62,7 @@ interact('.draggable')
       })
     function dragMoveListener (event) {
         var target = event.target
-        target.style.zIndex = "9999";
+       // target.style.zIndex = "99999999";
         // keep the dragged position in the data-x/data-y attributes
         var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
         var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy

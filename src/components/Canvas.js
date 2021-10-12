@@ -8,7 +8,7 @@ const RenderCanvas= (props) =>
         
         
         <div id="canvas-container">
-        <DragableImages onSelectImage={props.onSelectImage} dragImages={props.dragImage}/>
+        <DragableImages deleteImage={props.deleteImage} onSelectImage={props.onSelectImage} dragImages={props.dragImage}/>
 
         </div>
         </>

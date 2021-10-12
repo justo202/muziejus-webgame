@@ -17,52 +17,93 @@ class Main extends Component {
         this.state= {
 
             dragImage: [],
-            selectedID: null
-
+            selectedID: null,
+            deleteOnSelect: false,
+            cursor: 'default',
+            selectedZindex: 1
         }
     }
-    //Creates a new object array with the new item added to it
+    //Creates a new object array with the new item added to it  
     createNewArray = (item) =>
     {
         let newDragImages = [...this.state.dragImage, item]
         if(this.state.selectedID!= null)
             {
                 newDragImages.find(selectedImg => selectedImg.id === this.state.selectedID).selected = false; //changes the selected item
+                newDragImages.find(selectedImg => selectedImg.id === this.state.selectedID).zIndex = this.state.selectedZindex;
             }
         return newDragImages;
 
     }
-    onImageClick = (imgUrl, width, height, xx, yy, id) =>
-    {
+    delButtonToggle = () => {
+        
+      
+        var cursor = !this.state.deleteOnSelect ? 'alias' : 'default';
+        this.setState({
+            deleteOnSelect: !this.state.deleteOnSelect,
+            cursor: cursor
+        })
+    }
+    onImageClick = (imgUrl, width, height, xx, yy, id) =>{
+        var idd = this.state.dragImage.length;
         let item = {
-            imgUrl: imgUrl,
+            imgUrl: imgUrl, 
             width: width,
             height: height,
             cordx: xx,
             cordy: yy,
-            id: id,
+            id: idd,
+            zIndex: 999999,
             selected: true
-            }    
+            } 
+            
         let newDragImages = this.createNewArray(item);
             
             this.setState({
                 dragImage: newDragImages,
-                selectedID: id
+                selectedID: idd,
+                selectedZindex: this.state.selectedZindex+1
             })
     }
-    //changes the selected image
-    onSelectImage = ({image}) =>
+    deleteImage = (e, {image}) =>
     {
-        let activeImageArray = [...this.state.dragImage]; //make a copy of the state
-        if(this.state.selectedID!= null)
+        if(this.state.deleteOnSelect)
         {
-            activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).selected = false; //changes the selected item
+            e.target.remove();
+
+            let updatedArray = [...this.state.dragImage]; //make a copy of the state
+                updatedArray.filter(removeImage => removeImage !== {image})
+             //changes the selected item
+            this.setState({
+                dragImage: updatedArray,
+                selectedID: null
+            })
+
+
+
         }
-        activeImageArray.find(selectedImg => selectedImg.id === image.id).selected = true; //finds the item selected
-        this.setState({
-            dragImage: activeImageArray,
-            selectedID: image.id
-        })
+    }
+    //changes the selected image
+    onSelectImage = (e, {image}) =>
+    {
+        if(image.id != this.state.selectedID)
+        {
+            let activeImageArray = [...this.state.dragImage]; //make a copy of the state
+            if(this.state.selectedID!= null)
+            {
+                activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).selected = false; //changes the selected item
+                activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).zIndex = this.state.selectedZindex;
+            }
+            activeImageArray.find(selectedImg => selectedImg.id === image.id).selected = true; //finds the item selected
+            activeImageArray.find(selectedImg => selectedImg.id === image.id).zIndex = 99999;
+            this.setState({
+                dragImage: activeImageArray,
+                selectedID: image.id,
+                selectedZindex: this.state.selectedZindex+1
+            })
+
+        }
+
 
     }
     CancelSelect = (e) =>
@@ -73,9 +114,11 @@ class Main extends Component {
            
             let activeImageArray = [...this.state.dragImage]; //make a copy of the state
             activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).selected = false; //changes the selected item
+            activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).zIndex = this.state.selectedZindex;
             this.setState({
                 dragImage: activeImageArray,
-                selectedID: null
+                selectedID: null,
+                
             })
         }
     }
@@ -85,7 +128,7 @@ class Main extends Component {
         window.onclick = (e) => this.CancelSelect(e); //cancels the select on click
         return(
             
-            <div>
+            <div style={{cursor: this.state.cursor}}>
                 
                 <NavBar />
                 <Container fluid="lg unselect">
@@ -96,8 +139,8 @@ class Main extends Component {
                     </div>
                     
                     <div className="row mt-2">
-                        <RenderBar />
-                    <div className="col-12 col-md-10" > <RenderCanvas onSelectImage={this.onSelectImage} dragImage={this.state.dragImage}/> </div>
+                        <RenderBar onDelButtonClick={this.delButtonToggle}/>
+                    <div className="col-12 col-md-10" > <RenderCanvas deleteImage={this.deleteImage} onSelectImage={this.onSelectImage} dragImage={this.state.dragImage}/> </div>
                         
                     </div>
                 </Container>

@@ -2,14 +2,15 @@ import React from "react";
 
 
 
-const RenderImage = ({onSelectImage, image}) => {
+const RenderImage = ({deleteImage, onSelectImage, image}) => {
     
     var coordinateX=image.cordx-image.width/2;
     var coordinatesY=image.cordy-image.height/2;
-    let element = document.getElementById('canvas-container')
     
     return(
-        <img key={image.id} onMouseDown={() => onSelectImage({image})} onTouchStart={() => onSelectImage({image})} className={`draggable ${image.selected ? "selected" : ""}`} style={{top: coordinatesY, left: coordinateX }}src={image.imgUrl} width={image.width} height={image.height}/>
+        <img onClick={(e) => deleteImage(e, {image})} key={image.id} onMouseDown={(e) => onSelectImage(e, {image})} onTouchStart={(e) => onSelectImage(e, {image})} 
+        className={`draggable ${image.selected ? "selected" : ""}`} style={{zIndex: image.zIndex, top: coordinatesY, left: coordinateX }}
+        src={image.imgUrl} width={image.width} height={image.height}/>
        
     );
 }
@@ -17,7 +18,7 @@ const RenderImage = ({onSelectImage, image}) => {
 const RenderDragableImages = (props) => {
     const activeImages = props.dragImages.map((image) => {
             return(
-                <RenderImage onSelectImage={props.onSelectImage} image={image}/>  
+                <RenderImage deleteImage={props.deleteImage} onSelectImage={props.onSelectImage} image={image}/>  
         );
 });
     return(

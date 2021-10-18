@@ -19,9 +19,11 @@ class Main extends Component {
             dragImage: [],
             selectedID: null,
             deleteOnSelect: false,
+            createWord: false,
             cursor: 'default',
             selectedZindex: 1
         }
+        this.toolbtns = React.createRef();
     }
     //Creates a new object array with the new item added to it  
     createNewArray = (item) =>
@@ -44,9 +46,17 @@ class Main extends Component {
             cursor: cursor
         })
     }
-    onImageClick = (imgUrl, width, height, xx, yy, id) =>{
+    createWordButtonToggle = () => {
+        var cursor = !this.state.createWord ? 'alias' : 'default';
+        this.setState({
+            createWord: !this.state.createWord,
+            cursor: cursor
+        })
+    }
+    onImageClick = (imgUrl, width, height, xx, yy, typee) =>{
         var idd = this.state.dragImage.length;
         let item = {
+            type: typee,
             imgUrl: imgUrl, 
             width: width,
             height: height,
@@ -78,10 +88,31 @@ class Main extends Component {
                 dragImage: updatedArray,
                 selectedID: null
             })
-
-
-
         }
+    }
+    createNewWord = (e) => {
+        if(this.state.createWord) {
+            var x, y;
+            if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel'){
+                var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+                var touch = evt.touches[0] || evt.changedTouches[0];
+                x = touch.pageX;
+                y = touch.pageY;
+            } else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover'|| e.type=='mouseout' || e.type=='mouseenter' || e.type=='mouseleave') {
+                x = e.clientX;
+                y = e.clientY;
+            }
+            else{
+                x=e.clientX;
+                y=e.clientY;
+            }
+            console.log(x);
+            
+            this.onImageClick("","auto","auto",x,y,"textbox"); //creates new text box
+            this.createWordButtonToggle();
+            this.toolbtns.current.changeCreatebtn();
+        }
+
     }
     //changes the selected image
     onSelectImage = (e, {image}) =>
@@ -130,7 +161,7 @@ class Main extends Component {
             
             <div style={{cursor: this.state.cursor}}>
                 
-                <NavBar />
+                <NavBar addImage={this.onImageClick} />
                 <Container fluid="lg unselect">
                     <div className="row mt-2 unselect">
                         
@@ -139,8 +170,8 @@ class Main extends Component {
                     </div>
                     
                     <div className="row mt-2">
-                        <RenderBar onDelButtonClick={this.delButtonToggle}/>
-                    <div className="col-12 col-md-10" > <RenderCanvas deleteImage={this.deleteImage} onSelectImage={this.onSelectImage} dragImage={this.state.dragImage}/> </div>
+                        <RenderBar ref={this.toolbtns} createWordButtonToggle={this.createWordButtonToggle} onDelButtonClick={this.delButtonToggle}/>
+                    <div className="col-12 col-md-10" > <RenderCanvas createNewWord={this.createNewWord} deleteImage={this.deleteImage} onSelectImage={this.onSelectImage} dragImage={this.state.dragImage}/> </div>
                         
                     </div>
                 </Container>

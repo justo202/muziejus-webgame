@@ -12,25 +12,39 @@ import { Component } from "react";
     {
         super(props);
         this.state={
-            delButtonPressed: false
+            delButtonPressed: false,
+            createButtonPressed: false
         }
         this.RenderSideBar = this.RenderSideBar.bind(this);
         this.RenderMobileBar = this.RenderMobileBar.bind(this);
-        this.clickFunction = this.clickFunction.bind(this);
+        this.DelBtnClickFunction = this.DelBtnClickFunction.bind(this);
+        this.createBtnClickFunction = this.createBtnClickFunction.bind(this);
     }
-    clickFunction()  {
+    DelBtnClickFunction()  {
         this.props.onDelButtonClick();
         this.setState({
             delButtonPressed: !this.state.delButtonPressed
+        });
+    }
+    createBtnClickFunction()  {
+        this.props.createWordButtonToggle();
+        this.setState({
+            createButtonPressed: !this.state.createButtonPressed
+        });
+    }
+    changeCreatebtn() {
+        this.setState({
+            createButtonPressed: !this.state.createButtonPressed
         });
     }
     RenderSideBar(){
         return(
             <div className="col-2 d-none d-md-block">
             <Row> <button className="tool-btn mb-2"><FontAwesomeIcon icon={faMousePointer}/></button></Row>
-            <Row><button className="tool-btn mb-2"><FontAwesomeIcon icon={faPencilAlt}/></button></Row>
+            <Row><button style={{backgroundColor: this.state.createButtonPressed ? '#d40b1b' : '#512DA8'}} 
+            onClick={this.createBtnClickFunction} className="tool-btn mb-2"><FontAwesomeIcon icon={faPencilAlt}/></button></Row>
             <Row><button style={{backgroundColor: this.state.delButtonPressed ? '#d40b1b' : '#512DA8'}} 
-            onClick={this.clickFunction} className="tool-btn mb-2"><FontAwesomeIcon icon={faEraser}/></button></Row>
+            onClick={this.DelBtnClickFunction} className="tool-btn mb-2"><FontAwesomeIcon icon={faEraser}/></button></Row>
             </div>
         );
     }
@@ -38,9 +52,10 @@ import { Component } from "react";
         return(
             <div className="row d-md-none mb-2">
             <Col> <button className="tool-btn mb-2"><FontAwesomeIcon icon={faMousePointer}/></button></Col>
-            <Col><button className="tool-btn mb-2"><FontAwesomeIcon icon={faPencilAlt}/></button></Col>
+            <Col><button style={{backgroundColor: this.state.createButtonPressed ? '#d40b1b' : '#512DA8'}} 
+            onClick={this.createBtnClickFunction} className="tool-btn mb-2"><FontAwesomeIcon icon={faPencilAlt}/></button></Col>
             <Col><button style={{backgroundColor: this.state.delButtonPressed ? '#d40b1b' : '#512DA8'}} 
-            onClick={this.clickFunction} className="tool-btn mb-2"><FontAwesomeIcon icon={faEraser}/></button>  </Col>
+            onClick={this.DelBtnClickFunction} className="tool-btn mb-2"><FontAwesomeIcon icon={faEraser}/></button>  </Col>
             </div> 
         );
     }

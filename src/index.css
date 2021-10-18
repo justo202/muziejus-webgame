@@ -54,7 +54,7 @@ code {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-  z-index: 999999;
+  z-index: 99999;
   border-radius: 2px;
   position: relative;
 }
@@ -139,9 +139,18 @@ code {
   z-index: 999999;
   touch-action: none;
   user-select: none;
-  
+  border: none;
+  background: transparent;
 }
 .selected {
   border: 3px dotted black;
   border-radius: 1px;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black;
+  opacity: 1; /* Firefox */
+}
+.close {
+  border: none;
+  background-color: transparent;
 }

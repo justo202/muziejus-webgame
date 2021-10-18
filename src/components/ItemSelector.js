@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Card, CardImg, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
@@ -42,11 +41,6 @@ const RenderRightArrow = ({ClickFunction, page}) =>
         );
 
 }
-
-
-
-
-
 class Select extends Component {
     constructor(props)
     {
@@ -86,7 +80,6 @@ class Select extends Component {
         this.handleArrowIncrease = this.handleArrowIncrease.bind(this);
         this.imageClick = this.imageClick.bind(this);
     }
-
     imageClick =(e, {image}) => {
         var x, y;
         if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel'){
@@ -102,11 +95,9 @@ class Select extends Component {
             x=e.clientX;
             y=e.clientY;
         }
-
      //   image[2] = false; //prevents the image from being displayed in the img bar
-        this.props.onImageClick(image[0], 300, 300, x, y, image[1]);
+        this.props.onImageClick(image[0], 300, 300, x, y, "image");
         this.setState(this.state);
-
     }
     handleArrowDecrease()
     {
@@ -115,8 +106,7 @@ class Select extends Component {
             this.setState({
                 curPage: this.state.curPage - 1
             })
-        }
-      
+        } 
     }
     handleArrowIncrease()
     {
@@ -126,7 +116,6 @@ class Select extends Component {
     }
      RenderImageRow()
     {
-    
         const imageSet = this.state.page[this.state.curPage].map((image) => {
             if(image[2])
                 return(
@@ -144,9 +133,7 @@ class Select extends Component {
                         </div>
                    <RenderRightArrow ClickFunction={() => this.handleArrowIncrease()} page={this.state.curPage} />
                 </div>
-         
     );
-
 }
     render()
     {

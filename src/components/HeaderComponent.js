@@ -36,11 +36,12 @@ class Header extends Component {
             isDropDownOpen: false,
             isModalOpen: false,
             image: '',
-            file: []
+            file: null
         }
         this.toggleDropDown = this.toggleDropDown.bind(this);
         this.onDrop = this.onDrop.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.imageAdd = this.imageAdd.bind(this);
        
     }
     toggleDropDown() {
@@ -51,16 +52,19 @@ class Header extends Component {
       }
       toggleModal() {
         this.setState({
-            isModalOpen: !this.state.isModalOpen
+            isModalOpen: !this.state.isModalOpen,
+            
           });
 
       }
       onDrop(picture) {
-        this.setState({
-            file: this.state.file.push(picture)
-        })
-     //   console.log(this.state.file[0]);
-       this.props.addImage(URL.createObjectURL(new Blob(this.state.file[0], {type: "image/png"})),"400px","400px","50vw","50vh","image")
+          
+          if(picture.length) //if pictures isn't an empty object
+          {
+            this.setState({
+                file: new Blob(picture, {type: "image/png"})
+            })
+          }
     }
       //Snippet taken from https://stackoverflow.com/questions/31656689/how-to-save-img-to-users-local-computer-using-html2canvas
    
@@ -77,10 +81,15 @@ class Header extends Component {
               });
       }
       imageAdd(){
-          
-           //  console.log(this.state.file[0]);
-            //this.props.addImage(URL.createObjectURL(this.state.file),"400px","400px","50vw","50vh","image")
-          
+        if(this.state.file !== null){
+            this.props.addImage(URL.createObjectURL(this.state.file),"400px","400px","50vw","50vh","image");   
+            this.setState({
+                file: null
+            })
+            this.toggleModal();  
+        }else {
+            alert("Pasirinkite paveiksliuką!");
+        } 
       }
 
     render()
@@ -115,6 +124,7 @@ class Header extends Component {
                     
                     <ImageUploader
                 withIcon={true}
+                withPreview={true}
                 buttonText='Choose images'
                 onChange={this.onDrop}
                 imgExtension={['.jpg', '.gif', '.png', '.gif']}

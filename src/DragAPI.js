@@ -7,7 +7,10 @@ interact('.draggable')
       inertia: false,
       // keep the element within the area of it's parent
       modifiers: [
-      
+        interact.modifiers.restrictRect({
+        
+          endOnly: true
+        })
       ],
       // enable autoScroll
       autoScroll: true,

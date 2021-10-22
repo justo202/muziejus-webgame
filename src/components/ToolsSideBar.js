@@ -40,7 +40,7 @@ import { Component } from "react";
     RenderSideBar(){
         return(
             <div className="col-2 d-none d-md-block">
-            <Row> <button className="tool-btn mb-2"><FontAwesomeIcon icon={faMousePointer}/></button></Row>
+         
             <Row><button style={{backgroundColor: this.state.createButtonPressed ? '#d40b1b' : '#512DA8'}} 
             onClick={this.createBtnClickFunction} className="tool-btn mb-2"><FontAwesomeIcon icon={faPencilAlt}/></button></Row>
             <Row><button style={{backgroundColor: this.state.delButtonPressed ? '#d40b1b' : '#512DA8'}} 
@@ -51,7 +51,6 @@ import { Component } from "react";
     RenderMobileBar(){
         return(
             <div className="row d-md-none mb-2">
-            <Col> <button className="tool-btn mb-2"><FontAwesomeIcon icon={faMousePointer}/></button></Col>
             <Col><button style={{backgroundColor: this.state.createButtonPressed ? '#d40b1b' : '#512DA8'}} 
             onClick={this.createBtnClickFunction} className="tool-btn mb-2"><FontAwesomeIcon icon={faPencilAlt}/></button></Col>
             <Col><button style={{backgroundColor: this.state.delButtonPressed ? '#d40b1b' : '#512DA8'}} 

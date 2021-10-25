@@ -58,7 +58,7 @@ code {
   border-radius: 2px;
   position: relative;
 }
-.image-row::-webkit-scrollbar-track
+#canvas-container::-webkit-scrollbar-track, .image-row::-webkit-scrollbar-track
 {
 	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	border-radius: 10px;
@@ -67,7 +67,7 @@ code {
   
 }
 
-.image-row::-webkit-scrollbar
+#canvas-container::-webkit-scrollbar, .image-row::-webkit-scrollbar
 {
 	width: 2px;
 	background-color: #F5F5F5;
@@ -76,7 +76,7 @@ code {
   
 }
 
-.image-row::-webkit-scrollbar-thumb
+#canvas-container::-webkit-scrollbar-thumb, .image-row::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
 	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
@@ -116,6 +116,9 @@ code {
   height: 500px;
   background-color: gray;
   position: relative;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  white-space: nowrap;
 }
 
 .footer{

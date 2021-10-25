@@ -2,6 +2,7 @@ import React, {Component, createRef, useState } from "react";
 import ImageUploader from 'react-images-upload';
 import { Navbar, Nav, NavItem, NavbarBrand, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import html2canvas from "html2canvas";
+import { RemoveBgResult, RemoveBgError, removeBackgroundFromImageFile } from "remove.bg";
 
 function  saveAs(uri, filename) {
 
@@ -27,6 +28,8 @@ function  saveAs(uri, filename) {
 
     }
 }
+
+
 class Header extends Component {
 
     constructor(props)
@@ -82,6 +85,7 @@ class Header extends Component {
       }
       imageAdd(){
         if(this.state.file !== null){
+  
             this.props.addImage(URL.createObjectURL(this.state.file),"400px","400px","50vw","50vh","image");   
             this.setState({
                 file: null

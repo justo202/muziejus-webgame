@@ -91,6 +91,8 @@ class Main extends Component {
         }
     }
     createNewWord = (e) => {
+        var canvas = document.getElementById('canvas-container');
+        var bounds = canvas.getBoundingClientRect();
         if(this.state.createWord) {
             var x, y;
             if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel'){
@@ -108,7 +110,9 @@ class Main extends Component {
             }
             console.log(x);
             
-            this.onImageClick("","auto","auto",x,y,"textbox"); //creates new text box
+            var xx = x - bounds.left;
+            var yy = y - bounds.top;
+            this.onImageClick("","auto","auto",xx,yy,"textbox"); //creates new text box
             this.createWordButtonToggle();
             this.toolbtns.current.changeCreatebtn();
         }

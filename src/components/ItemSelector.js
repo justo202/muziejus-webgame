@@ -81,20 +81,11 @@ class Select extends Component {
         this.imageClick = this.imageClick.bind(this);
     }
     imageClick =(e, {image}) => {
+        var canvas = document.getElementById('canvas-container');
+        var bounds = canvas.getBoundingClientRect();
         var x, y;
-        if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel'){
-            var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
-            var touch = evt.touches[0] || evt.changedTouches[0];
-            x = touch.pageX;
-            y = touch.pageY;
-        } else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover'|| e.type=='mouseout' || e.type=='mouseenter' || e.type=='mouseleave') {
-            x = e.clientX;
-            y = e.clientY;
-        }
-        else{
-            x=e.clientX;
-            y=e.clientY;
-        }
+        x = bounds.width/2;
+        y = bounds.height/2;
      //   image[2] = false; //prevents the image from being displayed in the img bar
         this.props.onImageClick(image[0], 300, 300, x, y, "image");
         this.setState(this.state);

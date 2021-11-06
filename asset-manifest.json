@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/muziejus-webgame/static/css/main.7a8e875f.chunk.css",
-    "main.js": "/muziejus-webgame/static/js/main.7e5bd426.chunk.js",
-    "main.js.map": "/muziejus-webgame/static/js/main.7e5bd426.chunk.js.map",
+    "main.css": "/muziejus-webgame/static/css/main.dca4e200.chunk.css",
+    "main.js": "/muziejus-webgame/static/js/main.73577bc1.chunk.js",
+    "main.js.map": "/muziejus-webgame/static/js/main.73577bc1.chunk.js.map",
     "runtime-main.js": "/muziejus-webgame/static/js/runtime-main.9a5ae687.js",
     "runtime-main.js.map": "/muziejus-webgame/static/js/runtime-main.9a5ae687.js.map",
     "static/css/2.258bde9c.chunk.css": "/muziejus-webgame/static/css/2.258bde9c.chunk.css",
@@ -12,15 +12,16 @@
     "static/js/3.4131132c.chunk.js.map": "/muziejus-webgame/static/js/3.4131132c.chunk.js.map",
     "index.html": "/muziejus-webgame/index.html",
     "static/css/2.258bde9c.chunk.css.map": "/muziejus-webgame/static/css/2.258bde9c.chunk.css.map",
-    "static/css/main.7a8e875f.chunk.css.map": "/muziejus-webgame/static/css/main.7a8e875f.chunk.css.map",
+    "static/css/main.dca4e200.chunk.css.map": "/muziejus-webgame/static/css/main.dca4e200.chunk.css.map",
     "static/js/2.a8310c23.chunk.js.LICENSE.txt": "/muziejus-webgame/static/js/2.a8310c23.chunk.js.LICENSE.txt",
-    "static/media/UploadIcon.svg": "/muziejus-webgame/static/media/UploadIcon.469126df.svg"
+    "static/media/UploadIcon.svg": "/muziejus-webgame/static/media/UploadIcon.469126df.svg",
+    "static/media/index.css": "/muziejus-webgame/static/media/plytelės.4777e03b.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.9a5ae687.js",
     "static/css/2.258bde9c.chunk.css",
     "static/js/2.a8310c23.chunk.js",
-    "static/css/main.7a8e875f.chunk.css",
-    "static/js/main.7e5bd426.chunk.js"
+    "static/css/main.dca4e200.chunk.css",
+    "static/js/main.73577bc1.chunk.js"
   ]
 }

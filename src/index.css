@@ -1,4 +1,8 @@
 body {
+  background-image: url("./style_images/fonas_raudonas smulkus.png");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -13,16 +17,22 @@ code {
     monospace;
 }
 .navbar-dark {
+  background-image: url("./style_images/plytelės.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: repeat; /* Do not repeat the image */
+  background-size: contain; /* Resize the background image to cover the entire container */
   background-color: #512DA8;
 }
 #drop-custom {
 
-  background-color: #512DA8;
+ /* background-color: #512DA8 */
+  background-color: #d1847b;
   height: 100%;
-  border: none;
+ 
 }
 #drop-custom:hover {
-  background-color: #3c227a;
+  /* background-color: #3c227a;*/
+  background-color: #8a5b56;
 
 }
 .arrow {
@@ -80,7 +90,7 @@ code {
 {
 	border-radius: 10px;
 	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #512DA8;
+	background-color: #d1847b;
   z-index: 100;
   
 }
@@ -88,13 +98,13 @@ code {
   position: relative;
   display: inline-block;
   height: 95%;
-  width: 200px;
+  min-width: 100px;
   z-index: 99999;
 
 }
 
 .tool-btn {
-  background-color: #512DA8; 
+  background-color: #d1847b; 
   border: none; /* Remove borders */
   color: white; /* White text */
   height: 100%;
@@ -108,7 +118,7 @@ code {
 
 /* Darker background on mouse-over */
 .tool-btn:hover {
-  background-color: #351e6b;
+  background-color: #8a5b56;
 }
 
 #canvas-container {
@@ -122,7 +132,10 @@ code {
 }
 
 .footer{
-  
+  background-image: url("./style_images/plytelės.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: repeat; /* Do not repeat the image */
+  background-size: contain; /* Resize the background image to cover the entire container */
   background-color: #512DA8;
   margin:0px auto;
   margin-top: 100px;

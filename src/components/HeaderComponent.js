@@ -2,8 +2,35 @@ import React, {Component, createRef, useState } from "react";
 import ImageUploader from 'react-images-upload';
 import { Navbar, Nav, NavItem, NavbarBrand, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import html2canvas from "html2canvas";
-import { RemoveBgResult, RemoveBgError, removeBackgroundFromImageFile } from "remove.bg";
+import { RemoveBgResult, RemoveBgError, removeBackgroundFromImageFile, removeBackgroundFromImageUrl } from "remove.bg";
 
+
+
+ 
+/*
+async function removeFromImgUrl(url) {
+    try {
+      const outputFile = `${__dirname}/out/img-removed-from-url.png`;
+      const result = await removeBackgroundFromImageUrl({
+        url,
+        apiKey: "4ZfXWakShACXzcmxDuJxNrGt",
+        size: "regular",
+        type: "product",
+        outputFile
+      });
+  
+      console.log(`File saved to ${outputFile}`);
+      console.log(`${result.creditsCharged} credit(s) charged for this image`);
+      console.log(`Result width x height: ${result.resultWidth} x ${result.resultHeight}, type: ${result.detectedType}`);
+      console.log(result.base64img.substring(0, 40) + "..");
+      console.log(`Rate limit: ${result.rateLimit}, remaining: ${result.rateLimitRemaining}, reset: ${result.rateLimitReset}, retryAfter: ${result.retryAfter}`);
+    } catch (e) {
+      const errors = e;
+      console.log(JSON.stringify(errors));
+    }
+    return null;
+  }
+*/
 function  saveAs(uri, filename) {
 
     var link = document.createElement('a');
@@ -117,8 +144,6 @@ class Header extends Component {
                                     <DropdownItem onClick={() => this.toggleModal()}>Įkelti savo nuotrauką</DropdownItem>
                                 </DropdownMenu>
                             </Dropdown>
-                            
-                        
                         </Nav>
                     </div>
                 </Navbar>

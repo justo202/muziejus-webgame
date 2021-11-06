@@ -41,9 +41,9 @@ import { Component } from "react";
         return(
             <div className="col-2 d-none d-md-block">
          
-            <Row><button style={{backgroundColor: this.state.createButtonPressed ? '#d40b1b' : '#512DA8'}} 
+            <Row><button style={{backgroundColor: this.state.createButtonPressed ? '#d40b1b' : '#d1847b'}} 
             onClick={this.createBtnClickFunction} className="tool-btn mb-2"><FontAwesomeIcon icon={faPencilAlt}/></button></Row>
-            <Row><button style={{backgroundColor: this.state.delButtonPressed ? '#d40b1b' : '#512DA8'}} 
+            <Row><button style={{backgroundColor: this.state.delButtonPressed ? '#d40b1b' : '#d1847b'}} 
             onClick={this.DelBtnClickFunction} className="tool-btn mb-2"><FontAwesomeIcon icon={faEraser}/></button></Row>
             </div>
         );

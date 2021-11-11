@@ -95,14 +95,30 @@ code {
   
 }
 .images {
+  
   position: relative;
   display: inline-block;
   height: 95%;
   min-width: 100px;
   z-index: 99999;
-
 }
-
+.images img {
+  vertical-align: bottom;
+}
+.folders {
+  color: white;
+  cursor: pointer;
+}
+.folders:hover {
+  color: #d1847b;
+}
+.images span{
+  
+  text-align: center;
+  
+  display:block;
+  letter-spacing:0px;
+}
 .tool-btn {
   background-color: #d1847b; 
   border: none; /* Remove borders */

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faArrowRight, faFolder } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -25,7 +25,7 @@ const RenderLeftArrow = ({ClickFunction, page}) =>
 }
 const RenderRightArrow = ({ClickFunction, page}) =>
 {
-    if(page < 2)
+    if(page < 3)
         return(
 
             <div className="col-2 d-flex justify-content-center align-items-center unselect"  >
@@ -46,8 +46,24 @@ class Select extends Component {
     {
         super(props);
         this.state={
-            curPage: 0,
+            curPage: -1,
             page: [
+                [
+                    ["./assets/fonai/fonas_aikštė su fontanu.jpg", 42, true],
+                    ["./assets/fonai/fonas_kazimiero tapetas raudonas.jpg", 43, true],
+                    ["./assets/fonai/fonas_kazimiero tapetas.jpg", 44, true],
+                    ["./assets/fonai/fonas_kluatras.png", 45, true],
+                    ["./assets/fonai/fonas_medis su namukais.jpg", 46, true],
+                    ["./assets/fonai/fonas_nusitrynęs.png", 47, true],
+                    ["./assets/fonai/fonas_pagrindinis.jpg", 48, true],
+                    ["./assets/fonai/fonas_plytelės.jpg", 49, true],
+                    ["./assets/fonai/fonas_raudonas smulkus.png", 50, true],
+                    ["./assets/fonai/fonas_skliautai sulygiuoti.png", 51, true],
+                    ["./assets/fonai/fonas_skliautai.jpg", 52, true],
+                    ["./assets/fonai/fonas_žalias smulkus.png", 53, true],
+
+
+                ],
                 [
                     ["./assets/detalės-architektūros/detalės_akantas.png", 0, true],
                     ["./assets/detalės-architektūros/detalės_dorėninė kolona.png", 1, true],
@@ -134,16 +150,48 @@ class Select extends Component {
             curPage: this.state.curPage + 1
         })
     }
-     RenderImageRow()
+    viewFolder(number){
+        this.setState({
+            curPage: number
+        })
+    }
+    RenderImageRow()
     {
-        const imageSet = this.state.page[this.state.curPage].map((image) => {
-            if(image[2])
-                return(
-                    
-                  //  <div className="images m-1"> <img key={image[1]} onClick={(e) => this.imageClick(e, {image})}height="100%" width="100%" src={image[0]}></img></div> 
-                  <div className="images m-1"> <img key={image[1]} onClick={(e) => this.imageClick(e, {image})} style={{maxWidth: "100%", maxHeight: "100%"}} src={image[0]}></img></div> 
-                );     
-      });
+
+        let imageSet = [ <div onClick={() => this.viewFolder(-1)} className="images folders m-1"><FontAwesomeIcon  style={{width: "100%", height: "85%"}}icon= {faFolder} /><span   className="p-0">....</span></div> ,
+    ];
+        if(this.state.curPage != -1){
+            imageSet = [...imageSet , this.state.page[this.state.curPage].map((image) => {
+                if(image[2] && this.state.curPage != 0) {
+                    return(
+                        
+                        //  <div className="images m-1"> <img key={image[1]} onClick={(e) => this.imageClick(e, {image})}height="100%" width="100%" src={image[0]}></img></div> 
+                        <div className="images m-1"> <img key={image[1]} onClick={(e) => this.imageClick(e, {image})} style={{maxWidth: "100%", maxHeight: "100%"}} src={image[0]}></img></div> 
+                      ); 
+                } else if(image[2]) {
+
+                    return(
+                        
+                        //  <div className="images m-1"> <img key={image[1]} onClick={(e) => this.imageClick(e, {image})}height="100%" width="100%" src={image[0]}></img></div> 
+                        <div className="images m-1"> <img key={image[1]} onClick={() => this.props.changeCanvasBackground(image[0])} style={{maxWidth: "100%", maxHeight: "100%"}} src={image[0]}></img></div> 
+                      ); 
+                }
+    
+          })];
+        }
+        else {
+           
+            imageSet = [
+                <div onClick={() => this.viewFolder(0)}className="images folders m-1"><FontAwesomeIcon  style={{width: "100%", height: "85%"}}icon= {faFolder} /><span   className="p-0">Fonai</span></div> ,
+                <div onClick={() => this.viewFolder(1)}className="images folders m-1"> <FontAwesomeIcon  style={{width: "100%", height: "85%"}}icon= {faFolder} /><span  className="p-0">Architektūros detalės</span></div> ,
+                <div onClick={() => this.viewFolder(2)}className="images folders m-1"> <FontAwesomeIcon  style={{width: "100%", height: "85%"}}icon= {faFolder} /><span  className="p-0">Fasadai</span></div> ,
+                <div onClick={() => this.viewFolder(3)}className="images folders m-1"> <FontAwesomeIcon  style={{width: "100%", height: "85%"}}icon= {faFolder} /><span  className="p-0">Personažai</span></div>
+
+            ];
+
+
+        }
+   
     return(
                 <div className="row">
                     <RenderLeftArrow ClickFunction={() => this.handleArrowDecrease()} page={this.state.curPage}/>

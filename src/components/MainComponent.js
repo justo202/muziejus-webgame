@@ -24,6 +24,7 @@ class Main extends Component {
             selectedZindex: 1
         }
         this.toolbtns = React.createRef();
+        this.canvasRef = React.createRef();
     }
     //Creates a new object array with the new item added to it  
     createNewArray = (item) =>
@@ -157,7 +158,10 @@ class Main extends Component {
             })
         }
     }
-    
+    changeCanvasBackground = (backgroundURL) => {
+        console.log("hllo");
+        this.canvasRef.current.changeBackground(backgroundURL);
+    }
     render()
     {
         window.onclick = (e) => this.CancelSelect(e); //cancels the select on click
@@ -169,13 +173,13 @@ class Main extends Component {
                 <Container fluid="lg unselect">
                     <div className="row mt-2 unselect">
                         
-                            <Select onImageClick={this.onImageClick}/>
+                            <Select changeCanvasBackground={this.changeCanvasBackground} onImageClick={this.onImageClick}/>
                         
                     </div>
                     
                     <div className="row mt-2">
                         <RenderBar ref={this.toolbtns} createWordButtonToggle={this.createWordButtonToggle} onDelButtonClick={this.delButtonToggle}/>
-                    <div className="col-12 col-md-8" > <RenderCanvas createNewWord={this.createNewWord} deleteImage={this.deleteImage} onSelectImage={this.onSelectImage} dragImage={this.state.dragImage}/> </div>
+                    <div className="col-12 col-md-8" > <RenderCanvas ref={this.canvasRef} createNewWord={this.createNewWord} deleteImage={this.deleteImage} onSelectImage={this.onSelectImage} dragImage={this.state.dragImage}/> </div>
                         
                     </div>
                 </Container>

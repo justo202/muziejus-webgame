@@ -112,8 +112,8 @@ class Header extends Component {
       }
       imageAdd(){
         if(this.state.file !== null){
-  
-            this.props.addImage(URL.createObjectURL(this.state.file),"400px","400px","50vw","50vh","image");   
+            
+            this.props.addImage(URL.createObjectURL(this.state.file),"400px","400px",0,0,"image", "actors");   
             this.setState({
                 file: null
             })

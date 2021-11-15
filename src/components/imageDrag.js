@@ -4,7 +4,8 @@ import React from "react";
 
 const RenderImage = ({deleteImage, onSelectImage, image}) => {
     
-    var coordinateX=image.cordx-image.width/2;
+    var coordinateX=image.cordx;
+   
     var coordinatesY=image.cordy-image.height/2;
     if(image.type == "image")
     {
@@ -17,7 +18,7 @@ const RenderImage = ({deleteImage, onSelectImage, image}) => {
     } else if(image.type == "textbox"){
         return(
             <input placeholder="....."onClick={(e) => deleteImage(e, {image})} key={image.id} onMouseDown={(e) => onSelectImage(e, {image})} onTouchStart={(e) => onSelectImage(e, {image})} 
-            className={`draggable ${image.selected ? "selected" : ""}`} style={{zIndex: image.zIndex, top: image.cordy, left: image.cordx}}
+            className={`draggable ${image.selected ? "selected" : ""}`} style={{fontSize: image.textSize, zIndex: image.zIndex, top: image.cordy, left: image.cordx}}
              width={image.width} height={image.height} type="text"></input>
         );
     }

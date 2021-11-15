@@ -7,9 +7,20 @@ import RenderCanvas from './Canvas';
 import Footer from './FooterComponent';
 
 
+// get type of image. fasadai +0, architeturos detales +5000, veikejai +10000
 
 
+//created new image, set imagetype z index + selectedZindex. increment SelectzIndex
+//select ends, just leave it
+
+//item selected zindex = imagetype z index + selectedZindex. increment selectzindex
+
+//The z-indexes for image types
+const backgrounds = 0;
+const details = 5000;
+const actors = 10000;
 class Main extends Component {
+    
 
     constructor(props)
     {
@@ -25,6 +36,7 @@ class Main extends Component {
         }
         this.toolbtns = React.createRef();
         this.canvasRef = React.createRef();
+        
     }
     //Creates a new object array with the new item added to it  
     createNewArray = (item) =>
@@ -33,10 +45,17 @@ class Main extends Component {
         if(this.state.selectedID!= null)
             {
                 newDragImages.find(selectedImg => selectedImg.id === this.state.selectedID).selected = false; //changes the selected item
-                newDragImages.find(selectedImg => selectedImg.id === this.state.selectedID).zIndex = this.state.selectedZindex;
+              //  newDragImages.find(selectedImg => selectedImg.id === this.state.selectedID).zIndex = this.state.selectedZindex;
             }
         return newDragImages;
 
+    }
+    changeFontSize = (id, fontSize) => {
+        let tempArray = [...this.state.dragImage];
+        tempArray.find(selectedTextBox => selectedTextBox.id === id).textSize = fontSize;
+        this.setState({
+            dragImage: tempArray
+        })
     }
     delButtonToggle = () => {
         
@@ -54,7 +73,19 @@ class Main extends Component {
             cursor: cursor
         })
     }
-    onImageClick = (imgUrl, width, height, xx, yy, typee) =>{
+    getZindex = (imageType) => {
+        var zindex = this.state.selectedZindex;
+        if(imageType === "actors") {
+            zindex+=actors;
+        } else if(imageType === "backgrounds"){
+            zindex+=backgrounds;
+        } else if(imageType === "details"){
+            zindex+=details;
+        }
+        return zindex;
+
+    }
+    onImageClick = (imgUrl, width, height, xx, yy, typee, imageType) =>{
         var idd = this.state.dragImage.length;
         let item = {
             type: typee,
@@ -65,9 +96,11 @@ class Main extends Component {
             cordy: yy,
             id: idd,
             zIndex: 999999,
-            selected: true
+            selected: true,
+            textSize: 18,
+            imagePrio: imageType
             } 
-            
+            item.zIndex = this.getZindex(item.imagePrio);
         let newDragImages = this.createNewArray(item);
             
             this.setState({
@@ -75,6 +108,7 @@ class Main extends Component {
                 selectedID: idd,
                 selectedZindex: this.state.selectedZindex+1
             })
+          //  this.toolbtns.current.enableDropBtn(typee);
     }
     deleteImage = (e, {image}) =>
     {
@@ -89,6 +123,7 @@ class Main extends Component {
                 dragImage: updatedArray,
                 selectedID: null
             })
+            this.toolbtns.current.enableDropBtn("");
         }
     }
     createNewWord = (e) => {
@@ -109,11 +144,11 @@ class Main extends Component {
                 x=e.clientX;
                 y=e.clientY;
             }
-            console.log(x);
+        
             
             var xx = x - bounds.left;
             var yy = y - bounds.top;
-            this.onImageClick("","auto","auto",xx,yy,"textbox"); //creates new text box
+            this.onImageClick("","auto","auto",xx,yy,"textbox", "actors"); //creates new text box
             this.createWordButtonToggle();
             this.toolbtns.current.changeCreatebtn();
         }
@@ -128,16 +163,17 @@ class Main extends Component {
             if(this.state.selectedID!= null)
             {
                 activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).selected = false; //changes the selected item
-                activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).zIndex = this.state.selectedZindex;
+               // activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).zIndex = this.state.selectedZindex;
             }
             activeImageArray.find(selectedImg => selectedImg.id === image.id).selected = true; //finds the item selected
-            activeImageArray.find(selectedImg => selectedImg.id === image.id).zIndex = 99999;
+
+            activeImageArray.find(selectedImg => selectedImg.id === image.id).zIndex = this.getZindex(image.imagePrio);
             this.setState({
                 dragImage: activeImageArray,
                 selectedID: image.id,
                 selectedZindex: this.state.selectedZindex+1
             })
-
+           this.toolbtns.current.enableDropBtn(image.type, image.textSize, image.id);
         }
 
 
@@ -145,12 +181,13 @@ class Main extends Component {
     CancelSelect = (e) =>
     {  
         var selectedItem = e.target.nodeName;
+       
         if(this.state.selectedID!= null && selectedItem != 'IMG')
         {
            
             let activeImageArray = [...this.state.dragImage]; //make a copy of the state
             activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).selected = false; //changes the selected item
-            activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).zIndex = this.state.selectedZindex;
+           // activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).zIndex = this.state.selectedZindex;
             this.setState({
                 dragImage: activeImageArray,
                 selectedID: null,
@@ -159,8 +196,9 @@ class Main extends Component {
         }
     }
     changeCanvasBackground = (backgroundURL) => {
-        console.log("hllo");
+       
         this.canvasRef.current.changeBackground(backgroundURL);
+        
     }
     render()
     {
@@ -178,7 +216,7 @@ class Main extends Component {
                     </div>
                     
                     <div className="row mt-2">
-                        <RenderBar ref={this.toolbtns} createWordButtonToggle={this.createWordButtonToggle} onDelButtonClick={this.delButtonToggle}/>
+                        <RenderBar ref={this.toolbtns} changeFont={this.changeFontSize} createWordButtonToggle={this.createWordButtonToggle} onDelButtonClick={this.delButtonToggle}/>
                     <div className="col-12 col-md-8" > <RenderCanvas ref={this.canvasRef} createNewWord={this.createNewWord} deleteImage={this.deleteImage} onSelectImage={this.onSelectImage} dragImage={this.state.dragImage}/> </div>
                         
                     </div>

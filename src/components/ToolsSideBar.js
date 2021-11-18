@@ -24,14 +24,14 @@ import { Component } from "react";
         this.RenderMobileBar = this.RenderMobileBar.bind(this);
         this.DelBtnClickFunction = this.DelBtnClickFunction.bind(this);
         this.createBtnClickFunction = this.createBtnClickFunction.bind(this);
-        this.toggleDropDown = this.toggleDropDown.bind(this);
+        this.toggleDropDowns = this.toggleDropDowns.bind(this);
         this.changeFontSize = this.changeFontSize.bind(this);
     }
-    toggleDropDown() {
-        this.setState({
-            isDropDownOpen: !this.state.isDropDownOpen
-          });
-
+    toggleDropDowns() {
+     
+          this.setState(prevState => ({
+            isDropDownOpen: !prevState.isDropDownOpen
+          }));
       }
     DelBtnClickFunction()  {
         this.props.onDelButtonClick();
@@ -51,6 +51,7 @@ import { Component } from "react";
         });
     }
     changeFontSize(size) {
+        
         this.setState({
             fontSize: size
         })
@@ -73,22 +74,23 @@ import { Component } from "react";
     }
     RenderDropDownMenu(){
         if(this.state.fontSelectActive){
-            console.log("yessssssss");
+           
             const fontSizes = [34, 30, 26, 22, 18, 14, 10];
+            var x = 0;
             const dropDownItems = fontSizes.map(element => {
+                x++;
                 return(
-                    <DropdownItem onMouseDown={() => this.changeFontSize(element)} onTouchStart={() => this.changeFontSize(element)}>{element}</DropdownItem>
+                    <DropdownItem key={x} onMouseDown={() => this.changeFontSize(element)} onTouchStart={() => this.changeFontSize(element)}>{element}</DropdownItem>
                 );
-    
-            })
-    
-    
+                    
+            });
             return(
-                <Dropdown className="p-0" isOpen={this.state.isDropDownOpen} toggle={this.toggleDropDown} size="lg">
+                <Dropdown inNavbar={true} isOpen={this.state.isDropDownOpen} toggle={this.toggleDropDowns} className="p-0" size="lg">
                 <DropdownToggle style={{width:"100%"}} caret id ="drop-custom">
                                  {this.state.fontSize}   
                 </DropdownToggle>
                 <DropdownMenu style={{textAlign: "center", width: "100%", zIndex: "9999999999"}}  right>  
+                
                     {dropDownItems}
     
                 </DropdownMenu>
@@ -99,7 +101,7 @@ import { Component } from "react";
                 <button style={{backgroundColor: "gray", height: "45px",width:"100%"}} id ="drop-custom">
                                   
                 </button>
-            )
+            );
         }
       
 

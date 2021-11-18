@@ -36,7 +36,6 @@ class Main extends Component {
         }
         this.toolbtns = React.createRef();
         this.canvasRef = React.createRef();
-        
     }
     //Creates a new object array with the new item added to it  
     createNewArray = (item) =>
@@ -114,7 +113,7 @@ class Main extends Component {
     {
         if(this.state.deleteOnSelect)
         {
-            e.target.remove();
+            e.target.parentNode.remove();
 
             let updatedArray = [...this.state.dragImage]; //make a copy of the state
                 updatedArray.filter(removeImage => removeImage !== {image})
@@ -182,7 +181,7 @@ class Main extends Component {
     {  
         var selectedItem = e.target.nodeName;
        
-        if(this.state.selectedID!= null && selectedItem != 'IMG')
+        if(this.state.selectedID!= null && selectedItem != 'IMG' && selectedItem != "INPUT")
         {
            
             let activeImageArray = [...this.state.dragImage]; //make a copy of the state
@@ -200,9 +199,11 @@ class Main extends Component {
         this.canvasRef.current.changeBackground(backgroundURL);
         
     }
+    
     render()
     {
-        window.onclick = (e) => this.CancelSelect(e); //cancels the select on click
+        window.onclick = (e) => this.CancelSelect(e); //cancels the select on click 
+
         return(
             
             <div style={{cursor: this.state.cursor}}>

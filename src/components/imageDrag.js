@@ -1,6 +1,6 @@
 import React from "react";
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleNotch} from '@fortawesome/free-solid-svg-icons'
 
 const RenderImage = ({deleteImage, onSelectImage, image}) => {
     
@@ -10,16 +10,23 @@ const RenderImage = ({deleteImage, onSelectImage, image}) => {
     if(image.type == "image")
     {
         return(
-            <img onClick={(e) => deleteImage(e, {image})} key={image.id} onMouseDown={(e) => onSelectImage(e, {image})} onTouchStart={(e) => onSelectImage(e, {image})} 
-            className={`draggable ${image.selected ? "selected" : ""}`} style={{zIndex: image.zIndex, top: coordinatesY, left: coordinateX }}
-            src={image.imgUrl} width={image.width} height={image.height}/>
-           
+            <div key={image.id} width={image.width} height={image.height} className={`draggable ${image.selected ? "selected" : ""}`} style={{zIndex: image.zIndex, top: coordinatesY, left: coordinateX }} >
+            <img onClick={(e) => deleteImage(e, {image})} onMouseDown={(e) => onSelectImage(e, {image})} onTouchStart={(e) => onSelectImage(e, {image})} 
+            
+            src={image.imgUrl} width={"100%"} height={"100%"}/>
+            {image.selected ? <FontAwesomeIcon className="rotation-handle" icon={faCircleNotch}/> : <> </>}
+         
+            </div>
+
         );
     } else if(image.type == "textbox"){
         return(
-            <input placeholder="....."onClick={(e) => deleteImage(e, {image})} key={image.id} onMouseDown={(e) => onSelectImage(e, {image})} onTouchStart={(e) => onSelectImage(e, {image})} 
-            className={`draggable ${image.selected ? "selected" : ""}`} style={{fontSize: image.textSize, zIndex: image.zIndex, top: image.cordy, left: image.cordx}}
-             width={image.width} height={image.height} type="text"></input>
+            <div onMouseDown={(e) => onSelectImage(e, {image})} onTouchStart={(e) => onSelectImage(e, {image})} width={image.width} height={image.height} className={`draggable ${image.selected ? "selected" : ""}`} style={{zIndex: image.zIndex, top: image.cordy, left: image.cordx}}>
+            <input className="inputText"style={{fontSize: image.textSize}}placeholder="....."onClick={(e) => deleteImage(e, {image})} key={image.id}  
+            type="textbox"></input>
+               {image.selected ? <FontAwesomeIcon className="rotation-handle" icon={faCircleNotch}/> : <> </>}
+            </div>
+
         );
     }
  

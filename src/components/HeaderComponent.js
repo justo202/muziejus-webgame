@@ -125,13 +125,14 @@ class Header extends Component {
 
     render()
     {   
+        //<NavbarBrand className="mr-auto" href="/"><img src='assets/images/logo.png' height="30" width="41" alt='logo' /></NavbarBrand>
+
         return(
 
             <div>
             
                 <Navbar className="unselect" dark>
                     <div className="container">
-                        <NavbarBrand className="mr-auto" href="/"><img src='assets/images/logo.png' height="30" width="41" alt='logo' /></NavbarBrand>
                         <Nav className="ml-auto">
                         
                             <Dropdown isOpen={this.state.isDropDownOpen} toggle={this.toggleDropDown} size="lg">

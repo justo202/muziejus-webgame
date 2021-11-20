@@ -3,14 +3,46 @@ import ImageUploader from 'react-images-upload';
 import { Navbar, Nav, NavItem, NavbarBrand, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import html2canvas from "html2canvas";
 import { RemoveBgResult, RemoveBgError, removeBackgroundFromImageFile, removeBackgroundFromImageUrl } from "remove.bg";
+import axios from "axios";
+import formData from "form-data";
 
 
+async function removebg() {
 
- 
-/*
+    // Requires "axios" and "form-data" to be installed (see https://www.npmjs.com/package/axios and https://www.npmjs.com/package/form-data)
+const axios = require('axios');
+const FormData = require('form-data');
+const fs = require('fs');
+const path = require('path');
+
+var inputPath = "test.png";
+const formData = new FormData();
+formData.append('size', 'auto');
+formData.append('image_file', fs.createReadStream(inputPath), path.basename(inputPath));
+
+axios({
+  method: 'post',
+  url: 'https://api.remove.bg/v1.0/removebg',
+  data: formData,
+  responseType: 'arraybuffer',
+  headers: {
+    ...formData.getHeaders(),
+    'X-Api-Key': '4ZfXWakShACXzcmxDuJxNrGt',
+  },
+  encoding: null
+})
+.then((response) => {
+  if(response.status != 200) return console.error('Error:', response.status, response.statusText);
+  fs.writeFileSync("no-bg.png", response.data);
+})
+.catch((error) => {
+    return console.error('Request failed:', error);
+});
+} 
+
 async function removeFromImgUrl(url) {
     try {
-      const outputFile = `${__dirname}/out/img-removed-from-url.png`;
+      const outputFile = "./img-removed-from-url.png";
       const result = await removeBackgroundFromImageUrl({
         url,
         apiKey: "4ZfXWakShACXzcmxDuJxNrGt",
@@ -30,7 +62,7 @@ async function removeFromImgUrl(url) {
     }
     return null;
   }
-*/
+
 function  saveAs(uri, filename) {
 
     var link = document.createElement('a');
@@ -79,12 +111,14 @@ class Header extends Component {
             isDropDownOpen: !this.state.isDropDownOpen
           });
 
+
       }
       toggleModal() {
         this.setState({
             isModalOpen: !this.state.isModalOpen,
             
           });
+          removebg();
 
       }
       onDrop(picture) {
@@ -160,9 +194,7 @@ class Header extends Component {
                 imgExtension={['.jpg', '.gif', '.png', '.gif']}
                 maxFileSize={5242880}
                 singleImage={true}
-            />
-                   
-                   
+            />    
                     <ModalFooter>
                     <button onClick={this.imageAdd} className="tool-btn p-1">Ikelti paveiksliuką</button>
                     </ModalFooter>

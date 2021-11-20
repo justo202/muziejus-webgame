@@ -14,13 +14,11 @@ class RenderCanvas extends Component {
     changeBackground(backgroundURL){
         console.log(backgroundURL);
         this.setState({
-           // curStyle: {backgroundImage: backgroundURL, backgroundSize: "contain"}
            backgroundImage: backgroundURL
         })
     }
 
     render() {
-        console.log("render!");
         return (
             <>
             <div  style={{backgroundImage: `url("${this.state.backgroundImage}")`, backgroundSize: "cover",backgroundRepeat: "no-repeat"}} onClick={this.props.createNewWord} id="canvas-container">

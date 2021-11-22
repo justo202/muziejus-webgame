@@ -8,13 +8,10 @@ class RenderCanvas extends Component {
         this.state={
             backgroundImage: ""
         }
-
     }
-
     changeBackground(backgroundURL){
         console.log(backgroundURL);
         this.setState({
-           // curStyle: {backgroundImage: backgroundURL, backgroundSize: "contain"}
            backgroundImage: backgroundURL
         })
     }
@@ -25,7 +22,6 @@ class RenderCanvas extends Component {
             <>
             <div  style={{backgroundImage: `url("${this.state.backgroundImage}")`, backgroundSize: "cover",backgroundRepeat: "no-repeat"}} onClick={this.props.createNewWord} id="canvas-container">
             <DragableImages deleteImage={this.props.deleteImage} onSelectImage={this.props.onSelectImage} dragImages={this.props.dragImage}/>
-    
             </div>
             </>
         );

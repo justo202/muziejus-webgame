@@ -2,35 +2,6 @@ import React, {Component, createRef, useState } from "react";
 import ImageUploader from 'react-images-upload';
 import { Navbar, Nav, NavItem, NavbarBrand, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import html2canvas from "html2canvas";
-import { RemoveBgResult, RemoveBgError, removeBackgroundFromImageFile, removeBackgroundFromImageUrl } from "remove.bg";
-
-
-
- 
-/*
-async function removeFromImgUrl(url) {
-    try {
-      const outputFile = `${__dirname}/out/img-removed-from-url.png`;
-      const result = await removeBackgroundFromImageUrl({
-        url,
-        apiKey: "4ZfXWakShACXzcmxDuJxNrGt",
-        size: "regular",
-        type: "product",
-        outputFile
-      });
-  
-      console.log(`File saved to ${outputFile}`);
-      console.log(`${result.creditsCharged} credit(s) charged for this image`);
-      console.log(`Result width x height: ${result.resultWidth} x ${result.resultHeight}, type: ${result.detectedType}`);
-      console.log(result.base64img.substring(0, 40) + "..");
-      console.log(`Rate limit: ${result.rateLimit}, remaining: ${result.rateLimitRemaining}, reset: ${result.rateLimitReset}, retryAfter: ${result.retryAfter}`);
-    } catch (e) {
-      const errors = e;
-      console.log(JSON.stringify(errors));
-    }
-    return null;
-  }
-*/
 function  saveAs(uri, filename) {
 
     var link = document.createElement('a');
@@ -55,8 +26,6 @@ function  saveAs(uri, filename) {
 
     }
 }
-
-
 class Header extends Component {
 
     constructor(props)
@@ -125,8 +94,6 @@ class Header extends Component {
 
     render()
     {   
-        //<NavbarBrand className="mr-auto" href="/"><img src='assets/images/logo.png' height="30" width="41" alt='logo' /></NavbarBrand>
-
         return(
 
             <div>
@@ -161,22 +128,14 @@ class Header extends Component {
                 maxFileSize={5242880}
                 singleImage={true}
             />
-                   
-                   
                     <ModalFooter>
                     <button onClick={this.imageAdd} className="tool-btn p-1">Ikelti paveiksliuką</button>
                     </ModalFooter>
       </Modal>
-               
         </div>
 
-        );
-        
-            
-        
+        );   
     }
-
-
 }
 
 export default Header;

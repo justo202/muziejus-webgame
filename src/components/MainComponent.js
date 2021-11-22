@@ -5,23 +5,11 @@ import RenderBar from './ToolsSideBar';
 import { Container } from 'reactstrap';
 import RenderCanvas from './Canvas';
 import Footer from './FooterComponent';
-
-
-// get type of image. fasadai +0, architeturos detales +5000, veikejai +10000
-
-
-//created new image, set imagetype z index + selectedZindex. increment SelectzIndex
-//select ends, just leave it
-
-//item selected zindex = imagetype z index + selectedZindex. increment selectzindex
-
-//The z-indexes for image types
 const backgrounds = 0;
 const details = 5000;
 const actors = 10000;
 class Main extends Component {
-    
-
+  
     constructor(props)
     {
         super(props);
@@ -174,8 +162,6 @@ class Main extends Component {
             })
            this.toolbtns.current.enableDropBtn(image.type, image.textSize, image.id);
         }
-
-
     }
     CancelSelect = (e) =>
     {  
@@ -203,23 +189,19 @@ class Main extends Component {
     render()
     {
         window.onclick = (e) => this.CancelSelect(e); //cancels the select on click 
-
         return(
-            
             <div style={{cursor: this.state.cursor}}>
                 
                 <NavBar addImage={this.onImageClick} />
                 <Container fluid="lg unselect">
-                    <div className="row mt-2 unselect">
-                        
+                    <div className="row mt-2 unselect">   
                             <Select changeCanvasBackground={this.changeCanvasBackground} onImageClick={this.onImageClick}/>
-                        
                     </div>
                     
                     <div className="row mt-2">
                         <RenderBar ref={this.toolbtns} changeFont={this.changeFontSize} createWordButtonToggle={this.createWordButtonToggle} onDelButtonClick={this.delButtonToggle}/>
                     <div className="col-12 col-md-8" > <RenderCanvas ref={this.canvasRef} createNewWord={this.createNewWord} deleteImage={this.deleteImage} onSelectImage={this.onSelectImage} dragImage={this.state.dragImage}/> </div>
-                        
+                          
                     </div>
                 </Container>
                 <Footer />

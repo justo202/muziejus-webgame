@@ -104,7 +104,7 @@ class Select extends Component {
                         //  <div className="images m-1"> <img key={image[1]} onClick={(e) => this.imageClick(e, {image})}height="100%" width="100%" src={image[0]}></img></div> 
                         <div key={image[1]} className="images m-1">
                             
-                            <SuspenseImg onClick={() => this.props.changeCanvasBackground(image[0])} style={{maxWidth: "100%", maxHeight: "100%"}} src={image[0]}/>
+                            <SuspenseImg onClick={() => this.props.changeCanvasBackground(image[0])} style={{maxWidth: "100%", maxHeight: "100%"}} src={image[3]}/>
                             
                              </div> 
                       ); 

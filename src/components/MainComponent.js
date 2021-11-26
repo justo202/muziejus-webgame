@@ -5,6 +5,7 @@ import RenderBar from './ToolsSideBar';
 import { Container } from 'reactstrap';
 import RenderCanvas from './Canvas';
 import Footer from './FooterComponent';
+<<<<<<< Updated upstream
 
 
 // get type of image. fasadai +0, architeturos detales +5000, veikejai +10000
@@ -16,6 +17,9 @@ import Footer from './FooterComponent';
 //item selected zindex = imagetype z index + selectedZindex. increment selectzindex
 
 //The z-indexes for image types
+=======
+import LazyLoad from 'react-lazyload';
+>>>>>>> Stashed changes
 const backgrounds = 0;
 const details = 5000;
 const actors = 10000;
@@ -37,6 +41,10 @@ class Main extends Component {
         this.toolbtns = React.createRef();
         this.canvasRef = React.createRef();
     }
+
+
+
+
     //Creates a new object array with the new item added to it  
     createNewArray = (item) =>
     {
@@ -205,7 +213,6 @@ class Main extends Component {
         window.onclick = (e) => this.CancelSelect(e); //cancels the select on click 
 
         return(
-            
             <div style={{cursor: this.state.cursor}}>
                 
                 <NavBar addImage={this.onImageClick} />
@@ -224,6 +231,7 @@ class Main extends Component {
                 </Container>
                 <Footer />
             </div>
+           
         )
     }
 }

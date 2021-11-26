@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/muziejus-webgame/static/css/main.0e53e86c.chunk.css",
-    "main.js": "/muziejus-webgame/static/js/main.60146400.chunk.js",
-    "main.js.map": "/muziejus-webgame/static/js/main.60146400.chunk.js.map",
+    "main.js": "/muziejus-webgame/static/js/main.d420a1ba.chunk.js",
+    "main.js.map": "/muziejus-webgame/static/js/main.d420a1ba.chunk.js.map",
     "runtime-main.js": "/muziejus-webgame/static/js/runtime-main.8b918473.js",
     "runtime-main.js.map": "/muziejus-webgame/static/js/runtime-main.8b918473.js.map",
     "static/css/2.258bde9c.chunk.css": "/muziejus-webgame/static/css/2.258bde9c.chunk.css",
@@ -22,6 +22,6 @@
     "static/css/2.258bde9c.chunk.css",
     "static/js/2.47795749.chunk.js",
     "static/css/main.0e53e86c.chunk.css",
-    "static/js/main.60146400.chunk.js"
+    "static/js/main.d420a1ba.chunk.js"
   ]
 }

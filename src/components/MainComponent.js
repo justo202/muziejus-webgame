@@ -5,6 +5,7 @@ import RenderBar from './ToolsSideBar';
 import { Container } from 'reactstrap';
 import RenderCanvas from './Canvas';
 import Footer from './FooterComponent';
+
 const backgrounds = 0;
 const details = 5000;
 const actors = 10000;
@@ -185,9 +186,9 @@ class Main extends Component {
         this.canvasRef.current.changeBackground(backgroundURL);
         
     }
-    
     render()
     {
+       
         window.onclick = (e) => this.CancelSelect(e); //cancels the select on click 
         return(
             <div style={{cursor: this.state.cursor}}>

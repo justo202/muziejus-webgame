@@ -20,7 +20,7 @@ class RenderCanvas extends Component {
         console.log("render!");
         return (
             <>
-            <div  style={{backgroundImage: `url("${this.state.backgroundImage}")`, backgroundSize: "cover",backgroundRepeat: "no-repeat"}} onClick={this.props.createNewWord} id="canvas-container">
+            <div  style={{backgroundImage: `url("${this.state.backgroundImage}")`}} onClick={this.props.createNewWord} id="canvas-container">
             <DragableImages deleteImage={this.props.deleteImage} onSelectImage={this.props.onSelectImage} dragImages={this.props.dragImage}/>
             </div>
             </>

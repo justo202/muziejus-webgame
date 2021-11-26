@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faArrowRight, faFolder } from '@fortawesome/free-solid-svg-icons'
 import { images } from '../data/images';
+import { SuspenseImg } from './SuspenseImg';
+import { Suspense } from 'react';
+import { Loading } from './LoadingComponent';
 const RenderLeftArrow = ({ClickFunction, page}) =>
 {
     if(page > 0)
@@ -90,15 +93,20 @@ class Select extends Component {
                 if(image[2] && this.state.curPage != 0) {
                     return(
                         
+
                         //  <div className="images m-1"> <img key={image[1]} onClick={(e) => this.imageClick(e, {image})}height="100%" width="100%" src={image[0]}></img></div> 
-                        <div className="images m-1"> <img key={image[1]} onClick={(e) => this.imageClick(e, {image})} style={{maxWidth: "100%", maxHeight: "100%"}} src={image[0]}></img></div> 
+                        <div className="images m-1"><SuspenseImg onClick={(e) => this.imageClick(e, {image})} style={{maxWidth: "100%", maxHeight: "100%"}} src={image[0]}/> </div> 
                       ); 
                 } else if(image[2]) {
 
                     return(
-                        
+                       
                         //  <div className="images m-1"> <img key={image[1]} onClick={(e) => this.imageClick(e, {image})}height="100%" width="100%" src={image[0]}></img></div> 
-                        <div className="images m-1"> <img key={image[1]} onClick={() => this.props.changeCanvasBackground(image[0])} style={{maxWidth: "100%", maxHeight: "100%"}} src={image[0]}></img></div> 
+                        <div key={image[1]} className="images m-1">
+                            
+                            <SuspenseImg onClick={() => this.props.changeCanvasBackground(image[0])} style={{maxWidth: "100%", maxHeight: "100%"}} src={image[0]}/>
+                            
+                             </div> 
                       ); 
                 }
     
@@ -120,19 +128,24 @@ class Select extends Component {
                     <RenderLeftArrow ClickFunction={() => this.handleArrowDecrease()} page={this.state.curPage}/>
                     <div className="col-8">     
                         <div className="image-row">
+                        <Suspense fallback={<Loading/>}>
                         {imageSet}
+                        </Suspense>
                         </div>
                         </div>
                    <RenderRightArrow ClickFunction={() => this.handleArrowIncrease()} page={this.state.curPage} />
                 </div>
     );
-}
+}   
+  
     render()
     {
         return(
-            <div>
-                {this.RenderImageRow()}
-            </div>
+            <>
+  {this.RenderImageRow()}
+           </>
+              
+           
         );
     }
 }

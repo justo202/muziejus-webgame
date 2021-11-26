@@ -143,6 +143,10 @@ code {
   overflow-x: scroll;
   overflow-y: scroll;
   white-space: nowrap;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
 }
 
 .footer{
@@ -203,3 +207,11 @@ code {
   background-color: transparent;
   
 }
+
+.spinner {
+  color:#d1847b;
+
+  /*You can increase or decrease the timer (5s) to 
+   increase or decrease the speed of the spinner*/
+}
+

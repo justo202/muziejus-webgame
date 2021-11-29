@@ -98,7 +98,7 @@ import { Component } from "react";
             );
         } else {
             return(
-                <button style={{backgroundColor: "gray", height: "45px",width:"100%"}} id ="drop-custom">
+                <button style={{backgroundColor: "#d47d74", height: "45px",width:"100%"}} id ="drop-custom">
                                   
                 </button>
             );

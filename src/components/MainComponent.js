@@ -111,6 +111,8 @@ class Main extends Component {
                 dragImage: updatedArray,
                 selectedID: null
             })
+            this.delButtonToggle();
+            this.toolbtns.current.DelBtnClickFunction();
             this.toolbtns.current.enableDropBtn("");
         }
     }
@@ -201,7 +203,7 @@ class Main extends Component {
                     
                     <div className="row mt-2">
                         <RenderBar ref={this.toolbtns} changeFont={this.changeFontSize} createWordButtonToggle={this.createWordButtonToggle} onDelButtonClick={this.delButtonToggle}/>
-                    <div className="col-12 col-md-8" > <RenderCanvas ref={this.canvasRef} createNewWord={this.createNewWord} deleteImage={this.deleteImage} onSelectImage={this.onSelectImage} dragImage={this.state.dragImage}/> </div>
+                    <div className="col-12 col-md-10" > <RenderCanvas ref={this.canvasRef} createNewWord={this.createNewWord} deleteImage={this.deleteImage} onSelectImage={this.onSelectImage} dragImage={this.state.dragImage}/> </div>
                           
                     </div>
                 </Container>

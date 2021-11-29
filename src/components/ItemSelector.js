@@ -124,17 +124,20 @@ class Select extends Component {
         }
    
     return(
-                <div className="row">
-                    <RenderLeftArrow ClickFunction={() => this.handleArrowDecrease()} page={this.state.curPage}/>
-                    <div className="col-8">     
+                <>
+                    <div className="col-md-2"></div>
+                   { /*<RenderLeftArrow ClickFunction={() => this.handleArrowDecrease()} page={this.state.curPage}/> */}
+                        <div className="col-12 col-md-10">
                         <div className="image-row">
+                            
                         <Suspense fallback={<Loading/>}>
                         {imageSet}
                         </Suspense>
                         </div>
                         </div>
-                   <RenderRightArrow ClickFunction={() => this.handleArrowIncrease()} page={this.state.curPage} />
-                </div>
+                        
+                   {/* <RenderRightArrow ClickFunction={() => this.handleArrowIncrease()} page={this.state.curPage} /> */}
+               </>
     );
 }   
   

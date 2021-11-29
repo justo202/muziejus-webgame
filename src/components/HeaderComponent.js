@@ -103,13 +103,12 @@ class Header extends Component {
                         <Nav className="ml-auto">
                         
                             <Dropdown isOpen={this.state.isDropDownOpen} toggle={this.toggleDropDown} size="lg">
-                            <DropdownToggle caret id ="drop-custom">
+                            <DropdownToggle id ="drop-custom">
                                     ...
                             </DropdownToggle>
                                 <DropdownMenu style={{zIndex: "9999999999"}}  right>
-                                    <DropdownItem header>Pasirinkimai</DropdownItem>
-                                    <DropdownItem onClick={() => this.takeScreenshot()} >parsiųsk nuotrauką</DropdownItem>
-                                    <DropdownItem onClick={() => this.toggleModal()}>Įkelti savo nuotrauką</DropdownItem>
+                                    <DropdownItem onClick={() => this.takeScreenshot()} >ATSISIŲSK NUOTRAUKĄ</DropdownItem>
+                                    <DropdownItem onClick={() => this.toggleModal()}>ĮKELK SAVO NUOTRAUKĄ</DropdownItem>
                                 </DropdownMenu>
                             </Dropdown>
                         </Nav>

@@ -27,6 +27,8 @@ code {
   height: 100%;
   border: none;
  
+  font-weight: bold;
+ 
 }
 #drop-custom:hover {
   /* background-color: #3c227a;*/
@@ -55,7 +57,7 @@ code {
   }
 }
 .image-row {
-  display: absolute;
+  width: 100%;
   background-color: #555;
   box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   height: 200px;
@@ -63,10 +65,10 @@ code {
   overflow-y: hidden;
   white-space: nowrap;
   z-index: 99999;
-  border-radius: 2px;
+  border-radius: 4px;
   position: relative;
 }
-#canvas-container::-webkit-scrollbar-track, .image-row::-webkit-scrollbar-track
+.image-row::-webkit-scrollbar-track
 {
 	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	border-radius: 10px;
@@ -75,22 +77,26 @@ code {
   
 }
 
-#canvas-container::-webkit-scrollbar, .image-row::-webkit-scrollbar
+.image-row::-webkit-scrollbar
 {
 	width: 2px;
-	background-color: #F5F5F5;
+	background-color: transparent;
   z-index: 999999;
   
   
 }
 
-#canvas-container::-webkit-scrollbar-thumb, .image-row::-webkit-scrollbar-thumb
+.image-row::-webkit-scrollbar-thumb
 {
+ 
 	border-radius: 10px;
 	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #d1847b;
   z-index: 100;
   
+}
+#canvas-container::-webkit-scrollbar {
+  display: none;
 }
 .images {
   
@@ -138,17 +144,25 @@ code {
 #canvas-container {
   width: 100%;
   height: 500px;
-  background-color: gray;
+  background-color: #a0635c;
   position: relative;
   overflow-x: scroll;
   overflow-y: scroll;
   white-space: nowrap;
-  background-size: cover;
+  
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
+  background-size: cover;
 
 }
+.canvas-img {
+  height: 500px;
+  width: 100%;
+  position: sticky;
+  pointer-events: none;
+  user-select: none;
 
+}
 .footer{
   background-color: #d1847b;
   margin:0px auto;

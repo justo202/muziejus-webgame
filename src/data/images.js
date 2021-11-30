@@ -16,6 +16,16 @@ export var images = [
 
     ],
     [
+        ["./assets/fasadai/fasadai_kripta.png", 20, true, "backgrounds"],
+        ["./assets/fasadai/fasadai_nebaigta bažnyčia.png", 21, true, "backgrounds"],
+        ["./assets/fasadai/fasadas_antkapinis paminklas_1000 px.png", 22, true, "backgrounds"],
+        ["./assets/fasadai/fasadas_itališka koplyčia_1500 px.png", 23, true, "backgrounds"],
+        ["./assets/fasadai/fasadas_katedros šešėlis.png", 24, true, "backgrounds"],
+        ["./assets/fasadai/fasadas_mykolo png_2000 px.png", 25, true, "backgrounds"]
+      
+              
+    ],
+    [
         ["./assets/detalės-architektūros/detalės_akantas.png", 0, true, "details"],
         ["./assets/detalės-architektūros/detalės_dorėninė kolona.png", 1, true, "details"],
         ["./assets/detalės-architektūros/detalės_durys atidarytos.png", 2, true, "details"],
@@ -37,16 +47,6 @@ export var images = [
         ["./assets/detalės-architektūros/detalės_žvakė.png", 18, true, "details"],
         ["./assets/detalės-architektūros/krumas.png", 19, true, "details"]
 
-    ],
-    [
-        ["./assets/fasadai/fasadai_kripta.png", 20, true, "backgrounds"],
-        ["./assets/fasadai/fasadai_nebaigta bažnyčia.png", 21, true, "backgrounds"],
-        ["./assets/fasadai/fasadas_antkapinis paminklas_1000 px.png", 22, true, "backgrounds"],
-        ["./assets/fasadai/fasadas_itališka koplyčia_1500 px.png", 23, true, "backgrounds"],
-        ["./assets/fasadai/fasadas_katedros šešėlis.png", 24, true, "backgrounds"],
-        ["./assets/fasadai/fasadas_mykolo png_2000 px.png", 25, true, "backgrounds"]
-      
-              
     ],
     [
         ["./assets/personažai/Animacija - vitruvijus rate 1500 px.png", 26, true, "actors"],

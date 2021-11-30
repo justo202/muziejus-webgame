@@ -115,10 +115,10 @@ class Select extends Component {
         else {
            
             imageSet = [
-                <div onClick={() => this.viewFolder(0)}className="images folders m-1"><FontAwesomeIcon  style={{width: "100%", height: "85%"}}icon= {faFolder} /><span   className="p-0">Fonai</span></div> ,
-                <div onClick={() => this.viewFolder(1)}className="images folders m-1"> <FontAwesomeIcon  style={{width: "100%", height: "85%"}}icon= {faFolder} /><span  className="p-0">Architektūros detalės</span></div> ,
-                <div onClick={() => this.viewFolder(2)}className="images folders m-1"> <FontAwesomeIcon  style={{width: "100%", height: "85%"}}icon= {faFolder} /><span  className="p-0">Fasadai</span></div> ,
-                <div onClick={() => this.viewFolder(3)}className="images folders m-1"> <FontAwesomeIcon  style={{width: "100%", height: "85%"}}icon= {faFolder} /><span  className="p-0">Personažai</span></div>
+                <div onClick={() => this.viewFolder(0)}className="images folders m-1"><FontAwesomeIcon  style={{width: "100%", height: "85%"}}icon= {faFolder} /><span   className="p-0">FONAS</span></div> ,
+                <div onClick={() => this.viewFolder(1)}className="images folders m-1"> <FontAwesomeIcon  style={{width: "100%", height: "85%"}}icon= {faFolder} /><span  className="p-0">ARCHITEKTŪRA</span></div> ,
+                <div onClick={() => this.viewFolder(2)}className="images folders m-1"> <FontAwesomeIcon  style={{width: "100%", height: "85%"}}icon= {faFolder} /><span  className="p-0">DETALĖS</span></div> ,
+                <div onClick={() => this.viewFolder(3)}className="images folders m-1"> <FontAwesomeIcon  style={{width: "100%", height: "85%"}}icon= {faFolder} /><span  className="p-0">PERSONAŽAI</span></div>
 
             ];
         }
@@ -128,7 +128,7 @@ class Select extends Component {
                     <div className="col-md-2"></div>
                    { /*<RenderLeftArrow ClickFunction={() => this.handleArrowDecrease()} page={this.state.curPage}/> */}
                         <div className="col-12 col-md-10">
-                        <div className="image-row">
+                        <div className="image-row p-2">
                             
                         <Suspense fallback={<Loading/>}>
                         {imageSet}

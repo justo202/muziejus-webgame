@@ -1,8 +1,8 @@
 //this will be very easy, right?
 //OFFCANVAS
 import React from "react";
-import { Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
-import { faEraser, faMousePointer, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, ButtonGroup, Button, ButtonDropdown } from "reactstrap";
+import { faEraser, faFont, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Component } from "react";
 
@@ -85,11 +85,11 @@ import { Component } from "react";
                     
             });
             return(
-                <Dropdown inNavbar={true} isOpen={this.state.isDropDownOpen} toggle={this.toggleDropDowns} className="p-0" size="lg">
-                <DropdownToggle style={{width:"100%"}} caret id ="drop-custom">
+                <Dropdown style={{width: "50%"}}inNavbar={true} isOpen={this.state.isDropDownOpen} toggle={this.toggleDropDowns} className="p-0" size="lg">
+                <DropdownToggle style={{borderRadius: "0",width:"100%"}} caret id ="drop-custom">
                                  {this.state.fontSize}   
                 </DropdownToggle>
-                <DropdownMenu style={{textAlign: "center", width: "100%", zIndex: "9999999999"}}  right>  
+                <DropdownMenu style={{fontSize: "22px", textAlign: "center", width: "100%", zIndex: "9999999999"}}  right>  
                 
                     {dropDownItems}
     
@@ -98,9 +98,9 @@ import { Component } from "react";
             );
         } else {
             return(
-                <button style={{backgroundColor: "#d47d74", height: "45px",width:"100%"}} id ="drop-custom">
-                                  
-                </button>
+                <Button disabled={true} style={{width: "50%", backgroundColor: "#d1847b"}} id ="drop-custom">
+                             <FontAwesomeIcon icon={faFont}/>   
+                </Button>
             );
         }
       
@@ -109,22 +109,33 @@ import { Component } from "react";
     RenderSideBar(){
         return(
             <div className="col-2 d-none d-md-block">
-            <Row><button style={{backgroundColor: this.state.createButtonPressed ? '#d40b1b' : '#d1847b'}} 
-            onClick={this.createBtnClickFunction} className="tool-btn mb-2"><FontAwesomeIcon icon={faPencilAlt}/></button></Row>
-            <Row><button style={{backgroundColor: this.state.delButtonPressed ? '#d40b1b' : '#d1847b'}} 
-            onClick={this.DelBtnClickFunction} className="tool-btn mb-2"><FontAwesomeIcon icon={faEraser}/></button></Row>
-            <Row>{this.RenderDropDownMenu()}</Row>
+
+                <Row><Button size="lg" style={{border: "none", backgroundColor: this.state.delButtonPressed ? '#d40b1b' : '#d1847b'}} 
+                onClick={this.DelBtnClickFunction} className="tool-btn mb-2"><FontAwesomeIcon icon={faEraser}/></Button></Row>
+
+                <Row className="mb-2">
+
+                    <ButtonGroup size="lg" className="p-0">
+                        {this.RenderDropDownMenu()}
+                        <Button style={{width: "50%", border: "none", backgroundColor: this.state.createButtonPressed ? '#d40b1b' : '#d1847b'}} 
+                        onClick={this.createBtnClickFunction} className="tool-btn"><FontAwesomeIcon icon={faPencilAlt}/></Button>
+                    </ButtonGroup>
+                </Row>
             </div>
         );
     }
     RenderMobileBar(){
         return(
             <div className="row d-md-none mb-2">
-            <Col>{this.RenderDropDownMenu()}</Col>
-            <Col><button style={{backgroundColor: this.state.createButtonPressed ? '#d40b1b' : '#d1847b'}} 
-            onClick={this.createBtnClickFunction} className="tool-btn mb-2"><FontAwesomeIcon icon={faPencilAlt}/></button></Col>
-            <Col><button style={{backgroundColor: this.state.delButtonPressed ? '#d40b1b' : '#d1847b'}} 
-            onClick={this.DelBtnClickFunction} className="tool-btn mb-2"><FontAwesomeIcon icon={faEraser}/></button>  </Col>
+            <Col>
+                <ButtonGroup style={{width: "100%"}} size="lg" className="p-0">
+                    {this.RenderDropDownMenu()}
+                    <Button style={{width: "50%", border: "none", backgroundColor: this.state.createButtonPressed ? '#d40b1b' : '#d1847b'}} 
+                    onClick={this.createBtnClickFunction} className="tool-btn"><FontAwesomeIcon icon={faPencilAlt}/></Button>
+                </ButtonGroup>
+            </Col>
+            <Col><Button style={{border: "none", backgroundColor: this.state.delButtonPressed ? '#d40b1b' : '#d1847b'}} 
+            onClick={this.DelBtnClickFunction} className="tool-btn mb-2"><FontAwesomeIcon icon={faEraser}/></Button>  </Col>
             </div> 
         );
     }

@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/muziejus-webgame/static/css/main.c4784d24.chunk.css",
-    "main.js": "/muziejus-webgame/static/js/main.722a86a1.chunk.js",
-    "main.js.map": "/muziejus-webgame/static/js/main.722a86a1.chunk.js.map",
-    "runtime-main.js": "/muziejus-webgame/static/js/runtime-main.8b918473.js",
-    "runtime-main.js.map": "/muziejus-webgame/static/js/runtime-main.8b918473.js.map",
+    "main.css": "/muziejus-webgame/static/css/main.7e10df05.chunk.css",
+    "main.js": "/muziejus-webgame/static/js/main.eac7d58c.chunk.js",
+    "main.js.map": "/muziejus-webgame/static/js/main.eac7d58c.chunk.js.map",
+    "runtime-main.js": "/muziejus-webgame/static/js/runtime-main.b2ee720b.js",
+    "runtime-main.js.map": "/muziejus-webgame/static/js/runtime-main.b2ee720b.js.map",
     "static/css/2.258bde9c.chunk.css": "/muziejus-webgame/static/css/2.258bde9c.chunk.css",
-    "static/js/2.47795749.chunk.js": "/muziejus-webgame/static/js/2.47795749.chunk.js",
-    "static/js/2.47795749.chunk.js.map": "/muziejus-webgame/static/js/2.47795749.chunk.js.map",
-    "static/js/3.78d21a23.chunk.js": "/muziejus-webgame/static/js/3.78d21a23.chunk.js",
-    "static/js/3.78d21a23.chunk.js.map": "/muziejus-webgame/static/js/3.78d21a23.chunk.js.map",
+    "static/js/2.f0be1e42.chunk.js": "/muziejus-webgame/static/js/2.f0be1e42.chunk.js",
+    "static/js/2.f0be1e42.chunk.js.map": "/muziejus-webgame/static/js/2.f0be1e42.chunk.js.map",
+    "static/js/3.29813d05.chunk.js": "/muziejus-webgame/static/js/3.29813d05.chunk.js",
+    "static/js/3.29813d05.chunk.js.map": "/muziejus-webgame/static/js/3.29813d05.chunk.js.map",
     "index.html": "/muziejus-webgame/index.html",
     "static/css/2.258bde9c.chunk.css.map": "/muziejus-webgame/static/css/2.258bde9c.chunk.css.map",
-    "static/css/main.c4784d24.chunk.css.map": "/muziejus-webgame/static/css/main.c4784d24.chunk.css.map",
-    "static/js/2.47795749.chunk.js.LICENSE.txt": "/muziejus-webgame/static/js/2.47795749.chunk.js.LICENSE.txt",
+    "static/css/main.7e10df05.chunk.css.map": "/muziejus-webgame/static/css/main.7e10df05.chunk.css.map",
+    "static/js/2.f0be1e42.chunk.js.LICENSE.txt": "/muziejus-webgame/static/js/2.f0be1e42.chunk.js.LICENSE.txt",
     "static/media/UploadIcon.svg": "/muziejus-webgame/static/media/UploadIcon.469126df.svg",
     "static/media/index.css": "/muziejus-webgame/static/media/fonas_raudonas smulkus.15ccc7f9.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.8b918473.js",
+    "static/js/runtime-main.b2ee720b.js",
     "static/css/2.258bde9c.chunk.css",
-    "static/js/2.47795749.chunk.js",
-    "static/css/main.c4784d24.chunk.css",
-    "static/js/main.722a86a1.chunk.js"
+    "static/js/2.f0be1e42.chunk.js",
+    "static/css/main.7e10df05.chunk.css",
+    "static/js/main.eac7d58c.chunk.js"
   ]
 }

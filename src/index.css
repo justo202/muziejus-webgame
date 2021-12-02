@@ -222,8 +222,11 @@ code {
   background-color: transparent;
   
 }
-
+.txt {
+  height: fit-content !important;
+}
 .spinner {
   color:#d1847b;
 }
+
 

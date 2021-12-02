@@ -75,7 +75,7 @@ import { Component } from "react";
     RenderDropDownMenu(){
         if(this.state.fontSelectActive){
            
-            const fontSizes = [34, 30, 26, 22, 18, 14, 10];
+            const fontSizes = [26, 22, 18, 14, 12];
             var x = 0;
             const dropDownItems = fontSizes.map(element => {
                 x++;

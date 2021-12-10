@@ -73,18 +73,18 @@ code {
 }
 .image-row::-webkit-scrollbar-track
 {
-	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color: #F5F5F5;
-  z-index: 99999;
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3) !important;
+	border-radius: 10px !important;
+	background-color: #F5F5F5 !important;
+  z-index: 99999 !important;
   
 }
 
 .image-row::-webkit-scrollbar
 {
-	width: 2px;
-	background-color: transparent;
-  z-index: 999999;
+	width: 2px !important;
+	background-color: transparent !important;
+  z-index: 999999 !important;
   
   
 }
@@ -92,14 +92,14 @@ code {
 .image-row::-webkit-scrollbar-thumb
 {
  
-	border-radius: 10px;
-	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #d1847b;
-  z-index: 100;
+	border-radius: 10px !important;
+	box-shadow: inset 0 0 6px rgba(0,0,0,.3) !important;
+	background-color: #d1847b !important;
+  z-index: 100 !important;
   
 }
 #canvas-container::-webkit-scrollbar {
-  display: none;
+  display: none !important;
 }
 .images {
   

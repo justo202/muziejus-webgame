@@ -1,6 +1,47 @@
 
 import interact from 'interactjs'
 
+interact('.resizable').resizable({
+  // resize from all edges and corners
+  edges: { left: false, right: true, bottom: true, top: false },
+
+  listeners: {
+    move (event) {
+      var target = event.target
+      var x = (parseFloat(target.getAttribute('data-x')) || 0)
+      var y = (parseFloat(target.getAttribute('data-y')) || 0)
+      var angle = target.getAttribute('data-angle') || 0;
+      target.setAttribute('data-angle', 0);
+      // update the element's style
+      target.style.width = event.rect.width + 'px'
+      target.style.height = event.rect.height + 'px'
+      
+
+      // translate when resizing from top or left edges
+      x += event.deltaRect.left
+      y += event.deltaRect.top
+
+      target.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + 0 + 'rad' + ')';
+
+    },
+    
+  },
+  modifiers: [
+    // keep the edges inside the parent
+    interact.modifiers.restrictEdges({
+     
+    }),
+
+    // minimum size
+    interact.modifiers.restrictSize({
+      min: { width: 10, height: 10 }
+    })
+  ],
+
+  inertia: false
+})
+
+
 interact('.draggable')
     .draggable({
       // disable inertial throwing
@@ -127,3 +168,9 @@ interact('.draggable')
       
       // this function is used later in the resizing and gesture demos
       window.dragMoveListener = dragMoveListener
+
+    window.onresize = () => { //whenvever window is resized change back the size
+     document.getElementById('canvas-container').style.width = "100%";
+     document.getElementById('canvas-container').style.height = "100%";
+     
+    }

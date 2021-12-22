@@ -26,6 +26,7 @@ export var images = [
               
     ],
     [
+        ["./assets/fonai_low/fonas_pagrindinis.jpg", 54, true, "details"],
         ["./assets/detalės-architektūros/detalės_akantas.png", 0, true, "details"],
         ["./assets/detalės-architektūros/detalės_dorėninė kolona.png", 1, true, "details"],
         ["./assets/detalės-architektūros/detalės_durys atidarytos.png", 2, true, "details"],

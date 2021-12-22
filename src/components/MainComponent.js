@@ -5,6 +5,7 @@ import RenderBar from './ToolsSideBar';
 import { Container } from 'reactstrap';
 import RenderCanvas from './Canvas';
 import Footer from './FooterComponent';
+import { Logos } from './LogoSection';
 
 const backgrounds = 0;
 const details = 5000;
@@ -45,6 +46,14 @@ class Main extends Component {
             dragImage: tempArray
         })
     }
+    changezIndex = (id, itemZindex) => {
+        let tempArray = [...this.state.dragImage];
+        tempArray.find(selectedTextBox => selectedTextBox.id === id).zIndex = itemZindex;
+        this.setState({
+            dragImage: tempArray,
+            selectedZindex: this.state.selectedZindex >= itemZindex ? this.state.selectedZindex : itemZindex
+        })
+    }
     delButtonToggle = () => {
         
       
@@ -63,6 +72,7 @@ class Main extends Component {
     }
     getZindex = (imageType) => {
         var zindex = this.state.selectedZindex;
+        /*
         if(imageType === "actors") {
             zindex+=actors;
         } else if(imageType === "backgrounds"){
@@ -70,6 +80,7 @@ class Main extends Component {
         } else if(imageType === "details"){
             zindex+=details;
         }
+        */
         return zindex;
 
     }
@@ -90,7 +101,7 @@ class Main extends Component {
             } 
             item.zIndex = this.getZindex(item.imagePrio);
         let newDragImages = this.createNewArray(item);
-            
+        this.toolbtns.current.enablezIndexButtons(item.zIndex, item.id);
             this.setState({
                 dragImage: newDragImages,
                 selectedID: idd,
@@ -114,6 +125,7 @@ class Main extends Component {
             this.delButtonToggle();
             this.toolbtns.current.DelBtnClickFunction();
             this.toolbtns.current.enableDropBtn("");
+            this.toolbtns.current.disablezIndexButtons();
         }
     }
     createNewWord = (e) => {
@@ -141,6 +153,7 @@ class Main extends Component {
             this.onImageClick("","auto","auto",xx,yy,"textbox", "actors"); //creates new text box
             this.createWordButtonToggle();
             this.toolbtns.current.changeCreatebtn();
+            
         }
 
     }
@@ -156,21 +169,23 @@ class Main extends Component {
                // activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).zIndex = this.state.selectedZindex;
             }
             activeImageArray.find(selectedImg => selectedImg.id === image.id).selected = true; //finds the item selected
-
-            activeImageArray.find(selectedImg => selectedImg.id === image.id).zIndex = this.getZindex(image.imagePrio);
+         
+            //activeImageArray.find(selectedImg => selectedImg.id === image.id).zIndex = this.getZindex(image.imagePrio);
             this.setState({
                 dragImage: activeImageArray,
                 selectedID: image.id,
-                selectedZindex: this.state.selectedZindex+1
+               // selectedZindex: this.state.selectedZindex+1
             })
            this.toolbtns.current.enableDropBtn(image.type, image.textSize, image.id);
+           this.toolbtns.current.enablezIndexButtons(image.zIndex, image.id);
         }
     }
     CancelSelect = (e) =>
     {  
         var selectedItem = e.target.nodeName;
+        console.log(selectedItem)
        
-        if(this.state.selectedID!= null && selectedItem != 'IMG' && selectedItem != "INPUT")
+        if(this.state.selectedID!= null && selectedItem != 'IMG' && selectedItem != "INPUT" && selectedItem != "BUTTON")
         {
            
             let activeImageArray = [...this.state.dragImage]; //make a copy of the state
@@ -181,6 +196,7 @@ class Main extends Component {
                 selectedID: null,
                 
             })
+  
         }
     }
     changeCanvasBackground = (backgroundURL) => {
@@ -202,9 +218,13 @@ class Main extends Component {
                     </div>
                     
                     <div className="row mt-2">
-                        <RenderBar ref={this.toolbtns} changeFont={this.changeFontSize} createWordButtonToggle={this.createWordButtonToggle} onDelButtonClick={this.delButtonToggle}/>
-                    <div className="col-12 col-md-10" > <RenderCanvas ref={this.canvasRef} createNewWord={this.createNewWord} deleteImage={this.deleteImage} onSelectImage={this.onSelectImage} dragImage={this.state.dragImage}/> </div>
+                        <RenderBar ref={this.toolbtns} changezIndex={this.changezIndex} changeFont={this.changeFontSize} createWordButtonToggle={this.createWordButtonToggle} onDelButtonClick={this.delButtonToggle}/>
+                    <div className="col-12 col-md-10" style={{minHeight: "500px"}} > <RenderCanvas ref={this.canvasRef} createNewWord={this.createNewWord} deleteImage={this.deleteImage} onSelectImage={this.onSelectImage} dragImage={this.state.dragImage}/> </div>
                           
+                    </div>
+                    <div className='row'>
+                        <Logos />
+
                     </div>
                 </Container>
                 <Footer />

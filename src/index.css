@@ -157,7 +157,7 @@ code {
   background-size: cover;
 }
 .canvas-img {
-  height: auto;
+  height: 100%;
   width: 100%;
   position: sticky;
   pointer-events: none;
@@ -167,7 +167,7 @@ code {
 .footer{
   background-color: #d1847b;
   margin:0px auto;
-  margin-top: 100px;
+  margin-top: 20px;
   padding: 20px 0px 20px 0px;
   z-index: 9999999999;
 }
@@ -229,4 +229,7 @@ code {
   color:#d1847b;
 }
 
-
+.resizable {
+  touch-action: none;
+  user-select: none;
+}

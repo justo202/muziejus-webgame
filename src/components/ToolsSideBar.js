@@ -2,7 +2,7 @@
 //OFFCANVAS
 import React from "react";
 import { Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, ButtonGroup, Button, ButtonDropdown } from "reactstrap";
-import { faEraser, faFont, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { faEraser, faFont, faPencilAlt, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Component } from "react";
 
@@ -17,7 +17,10 @@ import { Component } from "react";
             createButtonPressed: false,
             fontSize: 18,
             fontSelectActive: false,
-            textID: 0
+            textID: 0,
+            zIndex: 0,
+            zIndexBtnsDisabled: true,
+            zIndexID: 0
 
         }
         this.RenderSideBar = this.RenderSideBar.bind(this);
@@ -57,6 +60,12 @@ import { Component } from "react";
         })
         this.props.changeFont(this.state.textID, size);
     }
+    changeItemsZIndex(index) {
+        this.setState({
+            zIndex: index
+        })
+        this.props.changezIndex(this.state.zIndexID, index);
+    }
     enableDropBtn(type, fontSize, textID){
         if(type === "textbox"){
             this.setState({
@@ -71,6 +80,20 @@ import { Component } from "react";
                 textID: 0
             })
         }
+    }
+    enablezIndexButtons(itemZindex, id) {
+        this.setState({
+            zIndex: itemZindex,
+            zIndexBtnsDisabled: false,
+            zIndexID: id
+        })
+    }
+    disablezIndexButtons() {
+        this.setState({
+            zIndex: 0,
+            zIndexBtnsDisabled: true,
+            zIndexID: 0
+        })
     }
     RenderDropDownMenu(){
         if(this.state.fontSelectActive){
@@ -103,8 +126,16 @@ import { Component } from "react";
                 </Button>
             );
         }
-      
-
+    }
+    incrementZindex(increment) {
+        var index = this.state.zIndex;
+        if(increment) {
+            index++
+        } else
+        {
+            index--;
+        }
+        this.changeItemsZIndex(index)
     }
     RenderSideBar(){
         return(
@@ -121,12 +152,38 @@ import { Component } from "react";
                         onClick={this.createBtnClickFunction} className="tool-btn"><FontAwesomeIcon icon={faPencilAlt}/></Button>
                     </ButtonGroup>
                 </Row>
+                <Row>
+                    <ButtonGroup size="lg" className="p-0">
+                        <Button disabled={this.state.zIndexBtnsDisabled} style={{ width: "33%", backgroundColor: "#a0635c", borderColor: "#d1847b"}} id ="zText">
+                                    {this.state.zIndex}
+                        </Button>
+                        <Button onClick={() =>this.incrementZindex(false)}  disabled={this.state.zIndexBtnsDisabled} style={{width: "33%", backgroundColor: "#d1847b"}} id ="drop-custom">
+                                    <FontAwesomeIcon icon={faMinus}/>   
+                        </Button>
+                        <Button onClick={() => this.incrementZindex(true)} disabled={this.state.zIndexBtnsDisabled} style={{width: "33%", backgroundColor: "#d1847b"}} id ="drop-custom">
+                                    <FontAwesomeIcon icon={faPlus}/>   
+                        </Button>
+                    </ButtonGroup>
+                </Row>
             </div>
         );
     }
     RenderMobileBar(){
         return(
             <div className="row d-md-none mb-2">
+            <Col>
+                <ButtonGroup style={{width: "100%"}} size="lg" className="p-0">
+                   <Button disabled={this.state.zIndexBtnsDisabled} style={{ width: "33%", backgroundColor: "#a0635c", borderColor: "#d1847b"}} id ="zText">
+                                        {this.state.zIndex}
+                    </Button>
+                    <Button onClick={() =>this.incrementZindex(false)}  disabled={this.state.zIndexBtnsDisabled} style={{width: "33%", backgroundColor: "#d1847b"}} id ="drop-custom">
+                                        <FontAwesomeIcon icon={faMinus}/>   
+                     </Button>
+                     <Button onClick={() => this.incrementZindex(true)} disabled={this.state.zIndexBtnsDisabled} style={{width: "33%", backgroundColor: "#d1847b"}} id ="drop-custom">
+                           <FontAwesomeIcon icon={faPlus}/>   
+                     </Button>
+                </ButtonGroup>
+            </Col>
             <Col>
                 <ButtonGroup style={{width: "100%"}} size="lg" className="p-0">
                     {this.RenderDropDownMenu()}
@@ -136,6 +193,8 @@ import { Component } from "react";
             </Col>
             <Col><Button style={{border: "none", backgroundColor: this.state.delButtonPressed ? '#d40b1b' : '#d1847b'}} 
             onClick={this.DelBtnClickFunction} className="tool-btn mb-2"><FontAwesomeIcon icon={faEraser}/></Button>  </Col>
+
+        
             </div> 
         );
     }

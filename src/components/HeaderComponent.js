@@ -100,6 +100,7 @@ class Header extends Component {
             
                 <Navbar className="unselect" dark>
                     <div className="container">
+                    <NavbarBrand className="mr-auto" href="/"><img src='./assets/logos/LOGO2.png' height="60" width="100" alt='BP muziejus' /></NavbarBrand>
                         <Nav className="ml-auto">
                         
                             <Dropdown isOpen={this.state.isDropDownOpen} toggle={this.toggleDropDown} size="lg">
@@ -107,7 +108,7 @@ class Header extends Component {
                                     ...
                             </DropdownToggle>
                                 <DropdownMenu style={{zIndex: "9999999999"}}  right>
-                                    <DropdownItem onClick={() => this.takeScreenshot()} >ATSISIŲSK NUOTRAUKĄ</DropdownItem>
+                                    <DropdownItem onClick={() => this.takeScreenshot()} >ATSISIŲSK ATVIRUTĘ</DropdownItem>
                                     <DropdownItem onClick={() => this.toggleModal()}>ĮKELK SAVO NUOTRAUKĄ</DropdownItem>
                                 </DropdownMenu>
                             </Dropdown>

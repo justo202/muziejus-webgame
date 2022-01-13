@@ -28,8 +28,8 @@ const RenderImage = ({deleteImage, onSelectImage, image}) => {
     } else if(image.type == "textbox"){
         return(
             <div onMouseDown={(e) => onSelectImage(e, {image})} onTouchStart={(e) => onSelectImage(e, {image})} width={image.width}  className={`draggable txt ${image.selected ? "selected" : ""}`} style={{zIndex: image.zIndex, top: image.cordy, left: image.cordx}}>
-            <p contentEditable="true" className="inputText m-0"style={{fontSize: image.textSize}} onClick={(e) => deleteImage(e, {image})} key={image.id}  
-            >...</p>
+            <p  contentEditable="true" className="inputText m-0"style={{fontSize: image.textSize}} onClick={(e) => deleteImage(e, {image})} key={image.id}  
+            ></p>
                {image.selected ? <FontAwesomeIcon className="rotation-handle" icon={faCircleNotch}/> : <> </>}
             </div>
         );

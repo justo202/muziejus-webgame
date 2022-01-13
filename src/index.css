@@ -217,11 +217,15 @@ code {
 }
 .inputText {
   width: 100%;
+  min-width: 40px;
   height: 100%;
   border: none;
   background-color: transparent;
   overflow: visible;
   
+}
+.inputText:empty {
+  background-color: #d1847b;
 }
 .txt {
   height: fit-content !important;

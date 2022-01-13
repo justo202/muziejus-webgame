@@ -2,6 +2,7 @@ import React, {Component, createRef, useState } from "react";
 import ImageUploader from 'react-images-upload';
 import { Navbar, Nav, NavItem, NavbarBrand, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import html2canvas from "html2canvas";
+import {IMAGE} from './MainImage'
 function  saveAs(uri, filename) {
 
     var link = document.createElement('a');
@@ -100,7 +101,8 @@ class Header extends Component {
             
                 <Navbar className="unselect" dark>
                     <div className="container">
-                    <NavbarBrand className="mr-auto" href="/"><img src='./assets/logos/LOGO2.png' height="60" width="100" alt='BP muziejus' /></NavbarBrand>
+                    <NavbarBrand className="mr-auto" href="/"><img src='./assets/logos/LOGO2.png' height="60" width="100" alt='BP muziejus' />  </NavbarBrand>
+                    <NavbarBrand className="mr-auto"> <IMAGE /> </NavbarBrand>
                         <Nav className="ml-auto">
                         
                             <Dropdown isOpen={this.state.isDropDownOpen} toggle={this.toggleDropDown} size="lg">

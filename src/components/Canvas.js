@@ -20,7 +20,7 @@ class RenderCanvas extends Component {
     render() {
         return (
             <>
-            <div style={{height: this.state.canvasHeight}} /*style={{backgroundImage: `url("${this.state.backgroundImage}")`}} */onClick={this.props.createNewWord} className="resizable" id="canvas-container"> 
+            <div style={{height: this.state.canvasHeight}} /*style={{backgroundImage: `url("${this.state.backgroundImage}")`}} */onClick={this.props.createNewWord} id="canvas-container"> 
             {(this.state.backgroundImage !== "") && <img onLoad={() => {this.setState({canvasHeight: "auto"})}}className="canvas-img" src={this.state.backgroundImage}/>}
             <DragableImages deleteImage={this.props.deleteImage} onSelectImage={this.props.onSelectImage} dragImages={this.props.dragImage}/>
             </div>

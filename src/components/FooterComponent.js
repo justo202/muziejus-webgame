@@ -1,17 +1,14 @@
 import React from "react";
+import { Logos } from "./LogoSection";
 
 const Footer = () =>
 {
     return(
         <div className="footer unselect">
             <div className="container">
-                <div className="row justify-content-center">  
-                    <div className="col-auto">
-                    <p>2021 © BPM</p>
+                <Logos />
                    
-                    </div>
-                   
-                </div>
+               
             </div>
 
         </div>

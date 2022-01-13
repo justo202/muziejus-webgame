@@ -185,7 +185,7 @@ class Main extends Component {
         var selectedItem = e.target.nodeName;
         console.log(selectedItem)
        
-        if(this.state.selectedID!= null && selectedItem != 'IMG' && selectedItem != "INPUT" && selectedItem != "BUTTON")
+        if(this.state.selectedID!= null && selectedItem != 'IMG' && selectedItem != "P" && selectedItem != "BUTTON")
         {
            
             let activeImageArray = [...this.state.dragImage]; //make a copy of the state
@@ -221,10 +221,6 @@ class Main extends Component {
                         <RenderBar ref={this.toolbtns} changezIndex={this.changezIndex} changeFont={this.changeFontSize} createWordButtonToggle={this.createWordButtonToggle} onDelButtonClick={this.delButtonToggle}/>
                     <div className="col-12 col-md-10" style={{minHeight: "500px"}} > <RenderCanvas ref={this.canvasRef} createNewWord={this.createNewWord} deleteImage={this.deleteImage} onSelectImage={this.onSelectImage} dragImage={this.state.dragImage}/> </div>
                           
-                    </div>
-                    <div className='row'>
-                        <Logos />
-
                     </div>
                 </Container>
                 <Footer />

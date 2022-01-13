@@ -220,10 +220,12 @@ code {
   height: 100%;
   border: none;
   background-color: transparent;
+  overflow: visible;
   
 }
 .txt {
   height: fit-content !important;
+  width: fit-content !important;
 }
 .spinner {
   color:#d1847b;

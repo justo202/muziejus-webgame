@@ -1,7 +1,7 @@
 export const IMAGE = () => {
     return (
         <>
-        <img height={"100px"} src="./assets/logos/užrašas.png"/>
+        <img style={{maxHeight: "50px"}} width={'100%'} src="./assets/logos/užrašas.png"/>
         </>
     );
 }

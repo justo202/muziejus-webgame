@@ -129,7 +129,7 @@ class Select extends Component {
                     <div className="col-md-2"></div>
                    { /*<RenderLeftArrow ClickFunction={() => this.handleArrowDecrease()} page={this.state.curPage}/> */}
                         <div className="col-12 col-md-10">
-                        <div className='row'> <IMAGE /> </div>
+                       
                         <div className="image-row p-2">
                             
                         <Suspense fallback={<Loading/>}>

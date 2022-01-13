@@ -2,6 +2,14 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleNotch} from '@fortawesome/free-solid-svg-icons'
 
+
+/*
+            <input autoFocus className="inputText"style={{fontSize: image.textSize}}placeholder="....."onClick={(e) => deleteImage(e, {image})} key={image.id}  
+            type="textbox"></input>
+
+*/
+
+
 //renders the image selected
 const RenderImage = ({deleteImage, onSelectImage, image}) => {
     
@@ -20,8 +28,8 @@ const RenderImage = ({deleteImage, onSelectImage, image}) => {
     } else if(image.type == "textbox"){
         return(
             <div onMouseDown={(e) => onSelectImage(e, {image})} onTouchStart={(e) => onSelectImage(e, {image})} width={image.width}  className={`draggable txt ${image.selected ? "selected" : ""}`} style={{zIndex: image.zIndex, top: image.cordy, left: image.cordx}}>
-            <input autoFocus className="inputText"style={{fontSize: image.textSize}}placeholder="....."onClick={(e) => deleteImage(e, {image})} key={image.id}  
-            type="textbox"></input>
+            <p contentEditable="true" className="inputText m-0"style={{fontSize: image.textSize}} onClick={(e) => deleteImage(e, {image})} key={image.id}  
+            >...</p>
                {image.selected ? <FontAwesomeIcon className="rotation-handle" icon={faCircleNotch}/> : <> </>}
             </div>
         );

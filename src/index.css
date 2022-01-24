@@ -70,6 +70,7 @@ code {
   z-index: 99999;
   border-radius: 4px;
   position: relative;
+
 }
 .image-row::-webkit-scrollbar-track
 {
@@ -152,6 +153,8 @@ code {
   overflow-y: scroll;
   white-space: nowrap;
   
+ 
+  scrollbar-width: none; /* Firefox 64 */
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;

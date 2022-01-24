@@ -45,6 +45,8 @@ class Header extends Component {
        
     }
     toggleDropDown() {
+        if(!this.state.isDropDownOpen)
+            this.props.removeSelect(); 
         this.setState({
             isDropDownOpen: !this.state.isDropDownOpen
           });
@@ -70,6 +72,7 @@ class Header extends Component {
    
       takeScreenshot()
       {
+          
           let element = document.getElementById('canvas-container')
           if(element != null)
             html2canvas(element, { allowTaint: false , windowWidth: element.width,

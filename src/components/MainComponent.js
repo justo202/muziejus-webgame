@@ -188,17 +188,22 @@ class Main extends Component {
         if(this.state.selectedID!= null && selectedItem != 'IMG' && selectedItem != "P" && selectedItem != "BUTTON")
         {
            
-            let activeImageArray = [...this.state.dragImage]; //make a copy of the state
-            activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).selected = false; //changes the selected item
-           // activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).zIndex = this.state.selectedZindex;
-            this.setState({
-                dragImage: activeImageArray,
-                selectedID: null,
-                
-            })
+           this.removeSelect();
   
         }
     }
+    removeSelect = () => {
+        
+        let activeImageArray = [...this.state.dragImage]; //make a copy of the state
+        activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).selected = false; //changes the selected item
+       // activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).zIndex = this.state.selectedZindex;
+        this.setState({
+            dragImage: activeImageArray,
+            selectedID: null,
+            
+        })
+    }
+
     changeCanvasBackground = (backgroundURL) => {
        
         this.canvasRef.current.changeBackground(backgroundURL);
@@ -211,7 +216,7 @@ class Main extends Component {
         return(
             <div style={{cursor: this.state.cursor}}>
                 
-                <NavBar addImage={this.onImageClick} />
+                <NavBar removeSelect={this.removeSelect} addImage={this.onImageClick} />
                 <Container fluid="lg unselect">
                     <div className="row mt-2 unselect">   
                             <Select changeCanvasBackground={this.changeCanvasBackground} onImageClick={this.onImageClick}/>

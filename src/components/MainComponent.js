@@ -183,7 +183,7 @@ class Main extends Component {
     CancelSelect = (e) =>
     {  
         var selectedItem = e.target.nodeName;
-        console.log(selectedItem)
+      
        
         if(this.state.selectedID!= null && selectedItem != 'IMG' && selectedItem != "P" && selectedItem != "BUTTON")
         {
@@ -194,14 +194,20 @@ class Main extends Component {
     }
     removeSelect = () => {
         
-        let activeImageArray = [...this.state.dragImage]; //make a copy of the state
-        activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).selected = false; //changes the selected item
-       // activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).zIndex = this.state.selectedZindex;
-        this.setState({
-            dragImage: activeImageArray,
-            selectedID: null,
-            
-        })
+
+        if(this.state.selectedID != null) {
+            let activeImageArray = [...this.state.dragImage]; //make a copy of the state
+
+            activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).selected = false; //changes the selected item
+           // activeImageArray.find(selectedImg => selectedImg.id === this.state.selectedID).zIndex = this.state.selectedZindex;
+            this.setState({
+                dragImage: activeImageArray,
+                selectedID: null,
+                
+            })
+
+        }
+
     }
 
     changeCanvasBackground = (backgroundURL) => {

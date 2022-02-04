@@ -47,6 +47,7 @@ class Header extends Component {
     toggleDropDown() {
         if(!this.state.isDropDownOpen)
             this.props.removeSelect(); 
+            
         this.setState({
             isDropDownOpen: !this.state.isDropDownOpen
           });
